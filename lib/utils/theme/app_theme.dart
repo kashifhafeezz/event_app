@@ -1,4 +1,5 @@
 import 'package:event_app/gen/fonts.gen.dart';
+import 'package:event_app/utils/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {
@@ -8,6 +9,8 @@ class AppTheme {
 
   ThemeData get lightTheme => _lightTheme;
   ThemeData get darkTheme => _darkTheme;
+  static BorderRadius textFieldBorderRadius = BorderRadius.circular(10);
+  static double textFieldBorderWidth = 0.8;
 
   static TextStyle style = const TextStyle(
     fontFamily: FontFamily.poppins,
@@ -42,7 +45,7 @@ class AppTheme {
     onSecondary: Colors.white,
     tertiary: Colors.blue.shade300,
     onTertiary: Colors.white,
-    error: const Color(0xffF1312A),
+    error: AppColors().alert,
     onError: Colors.white,
     surface: Colors.white,
     onSurface: Colors.black,
@@ -76,6 +79,38 @@ class AppTheme {
     ),
     colorScheme: _lightColorScheme,
     scaffoldBackgroundColor: Colors.white,
+    inputDecorationTheme: InputDecorationTheme(
+      contentPadding: const EdgeInsets.symmetric(vertical: 18, horizontal: 15),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: textFieldBorderRadius,
+        borderSide: BorderSide(
+          width: textFieldBorderWidth,
+          color: Colors.grey,
+        ),
+      ),
+      border: OutlineInputBorder(
+        borderRadius: textFieldBorderRadius,
+        borderSide: BorderSide(width: textFieldBorderWidth),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: textFieldBorderRadius,
+        borderSide: BorderSide(width: textFieldBorderWidth),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: textFieldBorderRadius,
+        borderSide: BorderSide(
+          width: textFieldBorderWidth,
+          color: AppColors().alert,
+        ),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: textFieldBorderRadius,
+        borderSide: BorderSide(
+          width: textFieldBorderWidth,
+          color: AppColors().alert,
+        ),
+      ),
+    ),
   );
 
   ///------- Dark Theme -------///
@@ -92,5 +127,36 @@ class AppTheme {
     ),
     colorScheme: _darkColorScheme,
     scaffoldBackgroundColor: const Color(0xff333333),
+    inputDecorationTheme: InputDecorationTheme(
+      enabledBorder: OutlineInputBorder(
+        borderRadius: textFieldBorderRadius,
+        borderSide: BorderSide(
+          width: textFieldBorderWidth,
+          color: Colors.grey,
+        ),
+      ),
+      border: OutlineInputBorder(
+        borderRadius: textFieldBorderRadius,
+        borderSide: BorderSide(width: textFieldBorderWidth),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: textFieldBorderRadius,
+        borderSide: BorderSide(width: textFieldBorderWidth),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: textFieldBorderRadius,
+        borderSide: BorderSide(
+          width: textFieldBorderWidth,
+          color: AppColors().alert,
+        ),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: textFieldBorderRadius,
+        borderSide: BorderSide(
+          width: textFieldBorderWidth,
+          color: AppColors().alert,
+        ),
+      ),
+    ),
   );
 }
