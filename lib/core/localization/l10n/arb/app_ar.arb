@@ -1,0 +1,15 @@
+{
+    "@@locale": "ar",
+    "login" : "تسجيل الدخول",
+    "@login" : {
+        "description": "نص عنوان شاشة تسجيل الدخول"
+    },
+    "internetFailureMessage": "يبدو أن جهازك غير متصل بالشبكة. يرجى التحقق من اتصالك بالإنترنت أو إعادة المحاولة لاحقًا.",
+    "@internetFailureMessage": {
+        "description": "سيتم عرض هذه الرسالة داخل شريط الوجبات الخفيفة"
+    },
+    "internetSuccessMessage": "تمت استعادة الاتصال بالإنترنت!",
+    "@internetSuccessMessage": {
+        "description": "سيتم عرض هذه الرسالة داخل شريط الوجبات الخفيفة"
+    }
+}
