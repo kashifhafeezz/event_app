@@ -116,5 +116,33 @@
     "make_sure_to_provide" : "Please make sure to provide both your email and password to continue.",
     "@make_sure_to_provide" : {
         "description": "Login Screen Login Button snack bar failure message"
-    }
+    },
+    "full_name_required" : "Full name is required",
+    "@full_name_required" : {
+        "description": "Register Screen field Full name validation"
+    },
+    "email_required" : "Email is required",
+    "@email_required" : {
+        "description": "Register Screen field Email validation"
+    },
+    "valid_email" : "Enter a valid email",
+    "@valid_email" : {
+        "description": "Register Screen field Valid Email validation"
+    },
+    "password_required" : "Password is required",
+    "@password_required" : {
+        "description": "Register Screen field Password validation"
+    },
+    "valid_password" : "Password must be at least 6 characters",
+    "@valid_password" : {
+        "description": "Register Screen field Valid Password validation"
+    },
+    "please_select_speciality" : "Please select a speciality",
+    "@please_select_speciality" : {
+        "description": "Register Screen field speciality validation"
+    },
+    "please_select_country" : "Please select a country",
+    "@please_select_country" : {
+        "description": "Register Screen field country validation"
+    } 
 }

@@ -115,5 +115,33 @@
     "make_sure_to_provide": "يرجى التأكد من توفير بريدك الإلكتروني وكلمة المرور للمتابعة.",
     "@make_sure_to_provide": {
         "description": "رسالة الفشل في شريط الإعلام عند الضغط على زر تسجيل الدخول في شاشة تسجيل الدخول."
+    },
+    "full_name_required": "الاسم الكامل مطلوب",
+    "@full_name_required": {
+        "description": "التحقق من حقل الاسم الكامل في شاشة التسجيل"
+    },
+    "email_required": "البريد الإلكتروني مطلوب",
+    "@email_required": {
+        "description": "التحقق من حقل البريد الإلكتروني في شاشة التسجيل"
+    },
+    "valid_email": "أدخل بريد إلكتروني صالح",
+    "@valid_email": {
+        "description": "التحقق من حقل البريد الإلكتروني الصالح في شاشة التسجيل"
+    },
+    "password_required": "كلمة المرور مطلوبة",
+    "@password_required": {
+        "description": "التحقق من حقل كلمة المرور في شاشة التسجيل"
+    },
+    "valid_password": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",
+    "@valid_password": {
+        "description": "التحقق من حقل كلمة المرور الصالحة في شاشة التسجيل"
+    },
+    "please_select_speciality": "يرجى اختيار التخصص",
+    "@please_select_speciality": {
+        "description": "التحقق من حقل التخصص في شاشة التسجيل"
+    },
+    "please_select_country": "يرجى اختيار الدولة",
+    "@please_select_country": {
+        "description": "التحقق من حقل الدولة في شاشة التسجيل"
     }
 }

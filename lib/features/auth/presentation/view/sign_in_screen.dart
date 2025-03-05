@@ -1,14 +1,18 @@
 import 'package:event_app/core/localization/l10n/l10n.dart';
+import 'package:event_app/features/auth/data/models/request_model/login_request_model.dart';
+import 'package:event_app/features/auth/presentation/manager/login_bloc/login_bloc.dart';
 import 'package:event_app/features/auth/presentation/widget/auth_header_widget.dart';
 import 'package:event_app/features/auth/presentation/widget/auth_validation.dart';
 import 'package:event_app/utils/common/app_button.dart';
 import 'package:event_app/utils/common/app_text_field.dart';
 import 'package:event_app/utils/contants/app_const.dart';
 import 'package:event_app/utils/contants/app_snack_bar.dart';
+import 'package:event_app/utils/di/di_container.dart';
 import 'package:event_app/utils/extension/context_extension.dart';
 import 'package:event_app/utils/navigation/app_navigation.dart';
 import 'package:event_app/utils/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -22,9 +26,18 @@ class _SignInScreenState extends State<SignInScreen> {
   final passwordController = TextEditingController();
   final ValueNotifier<bool> obscureTextNotifier = ValueNotifier(true);
   final formkey = GlobalKey<FormState>();
+  late LoginBloc loginBloc;
+
+  @override
+  void initState() {
+    loginBloc = di.get<LoginBloc>();
+    super.initState();
+  }
 
   @override
   void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
     obscureTextNotifier.dispose();
     super.dispose();
   }
@@ -52,22 +65,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         AuthHeaderWidget(title: context.l10n.login),
                         _fields(context),
                         const SizedBox(height: 32),
-                        AppButton(
-                          text: context.l10n.login_small,
-                          onPressed: () {
-                            if (formkey.currentState?.validate() ?? false) {
-                              AppSnackBar().showSuccessSnackBar(
-                                context: context,
-                                successMessage: context.l10n.login_successfully,
-                              );
-                            } else {
-                              AppSnackBar().showErrorSnackBar(
-                                context: context,
-                                errorMessage: context.l10n.make_sure_to_provide,
-                              );
-                            }
-                          },
-                        ),
+                        _loginButton(context),
                         const SizedBox(height: 30),
                         Text(
                           '${context.l10n.forget_password}?',
@@ -107,6 +105,51 @@ class _SignInScreenState extends State<SignInScreen> {
     );
   }
 
+  Widget _loginButton(BuildContext context) {
+    return BlocProvider.value(
+      value: loginBloc,
+      child: BlocConsumer<LoginBloc, LoginState>(
+        listener: (context, state) {
+          if (state is LoginErrorState) {
+            AppSnackBar().showErrorSnackBar(
+              context: context,
+              errorMessage: state.errorMessage,
+            );
+          }
+
+          if (state is LoginLoadedState) {
+            AppSnackBar().showSuccessSnackBar(
+              context: context,
+              successMessage: context.l10n.login_successfully,
+            );
+          }
+        },
+        builder: (context, state) {
+          return AppButton(
+            text: context.l10n.login_small,
+            onPressed: () {
+              if (formkey.currentState?.validate() ?? false) {
+                loginBloc.add(
+                  LoginUserEvent(
+                    requestModel: LoginRequestModel(
+                      email: emailController.text,
+                      password: passwordController.text,
+                    ),
+                  ),
+                );
+              } else {
+                AppSnackBar().showErrorSnackBar(
+                  context: context,
+                  errorMessage: context.l10n.make_sure_to_provide,
+                );
+              }
+            },
+          );
+        },
+      ),
+    );
+  }
+
   Widget _fields(BuildContext context) {
     return Form(
       key: formkey,
@@ -116,7 +159,9 @@ class _SignInScreenState extends State<SignInScreen> {
             controller: emailController,
             title: context.l10n.email,
             hintText: context.l10n.enter_a_email,
-            validator: AuthValidation().validateSignInEmail,
+            validator: (v) {
+              return AuthValidation().validateSignInEmail(v, context);
+            },
           ),
           const SizedBox(height: 15),
           ValueListenableBuilder<bool>(
@@ -138,7 +183,9 @@ class _SignInScreenState extends State<SignInScreen> {
                     obscureTextNotifier.value = !obscureText;
                   },
                 ),
-                validator: AuthValidation().validateSignInPassword,
+                validator: (v) {
+                  return AuthValidation().validateSignInPassword(v, context);
+                },
               );
             },
           ),

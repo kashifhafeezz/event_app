@@ -1,4 +1,6 @@
 import 'package:event_app/core/localization/l10n/l10n.dart';
+import 'package:event_app/features/auth/data/models/request_model/register_request_model.dart';
+import 'package:event_app/features/auth/presentation/manager/register_bloc/register_bloc.dart';
 import 'package:event_app/features/auth/presentation/widget/auth_header_widget.dart';
 import 'package:event_app/features/auth/presentation/widget/auth_validation.dart';
 import 'package:event_app/utils/common/app_button.dart';
@@ -7,10 +9,12 @@ import 'package:event_app/utils/common/app_text_field.dart';
 import 'package:event_app/utils/contants/app_const.dart';
 import 'package:event_app/utils/contants/app_snack_bar.dart';
 import 'package:event_app/utils/contants/app_utils.dart';
+import 'package:event_app/utils/di/di_container.dart';
 import 'package:event_app/utils/extension/context_extension.dart';
 import 'package:event_app/utils/navigation/app_navigation.dart';
 import 'package:event_app/utils/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -32,12 +36,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final selectedSpeciality = ValueNotifier<String?>(null);
   final selectedCountry = ValueNotifier<String?>(null);
 
+  late RegisterBloc registerBloc;
+
+  @override
+  void initState() {
+    registerBloc = di.get<RegisterBloc>();
+    super.initState();
+  }
+
   @override
   void dispose() {
+    fullNameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    mobileNumberController.dispose();
+    instagramController.dispose();
+    tiktokController.dispose();
     obscureTextNotifier.dispose();
     userConsent.dispose();
     selectedSpeciality.dispose();
     selectedCountry.dispose();
+    registerBloc.close();
     super.dispose();
   }
 
@@ -64,24 +83,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         AuthHeaderWidget(title: context.l10n.registration),
                         _fields(context),
                         _userConsentCheckBox(),
-                        AppButton(
-                          text: context.l10n.register,
-                          onPressed: () {
-                            if (formkey.currentState?.validate() ?? false) {
-                              AppSnackBar().showSuccessSnackBar(
-                                context: context,
-                                successMessage:
-                                    context.l10n.registered_successfully,
-                              );
-                            } else {
-                              AppSnackBar().showErrorSnackBar(
-                                context: context,
-                                errorMessage:
-                                    context.l10n.fill_out_all_the_fields,
-                              );
-                            }
-                          },
-                        ),
+                        _registerButton(context),
                         const SizedBox(height: 30),
                         GestureDetector(
                           onTap: () {
@@ -112,6 +114,60 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
+  Widget _registerButton(BuildContext context) {
+    return BlocProvider.value(
+      value: registerBloc,
+      child: BlocConsumer<RegisterBloc, RegisterState>(
+        listener: (context, state) {
+          if (state is RegisterErrorState) {
+            AppSnackBar().showErrorSnackBar(
+              context: context,
+              errorMessage: state.errorMessage,
+            );
+          }
+
+          if (state is RegisterLoadedState) {
+            AppSnackBar().showSuccessSnackBar(
+              context: context,
+              successMessage: context.l10n.registered_successfully,
+            );
+            AppNavigation().navigateBack(context: context);
+          }
+        },
+        builder: (context, state) {
+          return AppButton(
+            text: context.l10n.register,
+            onPressed: () {
+              if (formkey.currentState!.validate() &&
+                  userConsent.value == true) {
+                registerBloc.add(
+                  RegisterUserEvent(
+                    requestModel: RegisterRequestModel(
+                      username: fullNameController.text,
+                      email: emailController.text,
+                      mobileNumber: mobileNumberController.text,
+                      password: passwordController.text,
+                      speciality: selectedSpeciality.value.toString(),
+                      country: selectedCountry.value.toString(),
+                      instagramLink: instagramController.text,
+                      tikTokLink: tiktokController.text,
+                      userconsent: 'Agree',
+                    ),
+                  ),
+                );
+              } else {
+                AppSnackBar().showErrorSnackBar(
+                  context: context,
+                  errorMessage: context.l10n.fill_out_all_the_fields,
+                );
+              }
+            },
+          );
+        },
+      ),
+    );
+  }
+
   Widget _fields(BuildContext context) {
     return Form(
       key: formkey,
@@ -121,14 +177,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
             controller: fullNameController,
             title: context.l10n.full_name,
             hintText: context.l10n.full_name_hint,
-            validator: AuthValidation().validateFullName,
+            validator: (v) {
+              return AuthValidation().validateFullName(v, context);
+            },
           ),
           const SizedBox(height: 15),
           AppTextField(
             controller: emailController,
             title: context.l10n.email,
             hintText: context.l10n.enter_a_email,
-            validator: AuthValidation().validateEmail,
+            validator: (v) {
+              return AuthValidation().validateEmail(v, context);
+            },
           ),
           const SizedBox(height: 15),
           ValueListenableBuilder<bool>(
@@ -139,7 +199,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 title: context.l10n.password,
                 hintText: context.l10n.enter_a_password,
                 obscureText: obscureText,
-                validator: AuthValidation().validatePassword,
+                validator: (v) {
+                  return AuthValidation().validatePassword(v, context);
+                },
                 suffixIcon: IconButton(
                   icon: Icon(
                     obscureText
@@ -166,7 +228,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 onChanged: (newValue) {
                   selectedSpeciality.value = newValue;
                 },
-                validator: AuthValidation().validateSpeciality,
+                validator: (v) {
+                  return AuthValidation().validateSpeciality(v, context);
+                },
               );
             },
           ),
@@ -182,7 +246,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 onChanged: (newValue) {
                   selectedCountry.value = newValue;
                 },
-                validator: AuthValidation().validateCountry,
+                validator: (v) {
+                  return AuthValidation().validateCountry(v, context);
+                },
               );
             },
           ),
