@@ -122,11 +122,14 @@ class _SignInScreenState extends State<SignInScreen> {
               context: context,
               successMessage: context.l10n.login_successfully,
             );
+
+            AppNavigation().navigateToHome(context: context);
           }
         },
         builder: (context, state) {
           return AppButton(
             text: context.l10n.login_small,
+            isLoading: state is LoginLoadingState,
             onPressed: () {
               if (formkey.currentState?.validate() ?? false) {
                 loginBloc.add(

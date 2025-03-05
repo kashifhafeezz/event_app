@@ -1,4 +1,5 @@
 import 'package:event_app/core/localization/manager/cubit/locale_cubit.dart';
+import 'package:event_app/core/services/secure_storage_service.dart';
 import 'package:event_app/features/auth/data/datasource/auth_remote_data_source.dart';
 import 'package:event_app/features/auth/data/datasource/auth_remote_data_source_impl.dart';
 import 'package:event_app/features/auth/data/repository_implementation/auth_repository_impl.dart';
@@ -36,7 +37,10 @@ void _manageUseCases() {
 void _manageRepositories() {
   di
     ..registerLazySingleton<AuthRepository>(
-      () => AuthRepositoryImpl(authRemoteDataSource: di()),
+      () => AuthRepositoryImpl(
+        authRemoteDataSource: di(),
+        storageService: di(),
+      ),
     )
     ..registerLazySingleton<AuthRemoteDataSource>(
       () => AuthRemoteDataSourceImplementation(client: di()),
@@ -44,7 +48,9 @@ void _manageRepositories() {
 }
 
 void _manageExternalDataSources() {
-  di.registerLazySingleton<ApiClient>(
-    () => ApiClient(baseUrl: ApiRoutes().baseUrl),
-  );
+  di
+    ..registerLazySingleton<ApiClient>(
+      () => ApiClient(baseUrl: ApiRoutes().baseUrl),
+    )
+    ..registerLazySingleton<SecureStorageService>(SecureStorageService.new);
 }

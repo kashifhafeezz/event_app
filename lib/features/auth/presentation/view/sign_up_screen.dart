@@ -35,7 +35,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final userConsent = ValueNotifier<bool>(false);
   final selectedSpeciality = ValueNotifier<String?>(null);
   final selectedCountry = ValueNotifier<String?>(null);
-
   late RegisterBloc registerBloc;
 
   @override
@@ -137,6 +136,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         builder: (context, state) {
           return AppButton(
             text: context.l10n.register,
+            isLoading: state is RegisterLoadingState,
             onPressed: () {
               if (formkey.currentState!.validate() &&
                   userConsent.value == true) {

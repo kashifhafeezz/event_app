@@ -23,4 +23,8 @@ class AppNavigation {
   void navigateToSignUp({required BuildContext context}) {
     context.pushNamed(_routeNames.signUpRoute.convertRouteToName);
   }
+
+  void navigateToHome({required BuildContext context}) {
+    context.goNamed(_routeNames.homeRoute.convertRouteToName);
+  }
 }

@@ -32,7 +32,9 @@ class AppButton extends StatelessWidget {
       height: height,
       width: width,
       child: ElevatedButton(
-        onPressed: (disabled || isLoading) ? null : onPressed,
+        // onPressed: (disabled || isLoading) ? null : onPressed,
+        onPressed: disabled ? null : onPressed,
+
         style: ElevatedButton.styleFrom(
           backgroundColor: buttonColor ?? context.colorScheme.primary,
           foregroundColor: buttonColor ?? context.colorScheme.onPrimary,
@@ -47,13 +49,15 @@ class AppButton extends StatelessWidget {
           ),
         ),
         child: isLoading
-            ? SizedBox(
-                height: 20,
-                width: 20,
-                child: CircularProgressIndicator(
-                  strokeWidth: 2,
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    context.colorScheme.onPrimary,
+            ? Center(
+                child: SizedBox(
+                  height: 24,
+                  width: 24,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      context.colorScheme.onPrimary,
+                    ),
                   ),
                 ),
               )

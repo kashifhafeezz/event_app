@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:event_app/core/response_error/view/response_error.dart';
+import 'package:event_app/core/services/secure_storage_service.dart';
 import 'package:event_app/features/auth/data/datasource/auth_remote_data_source.dart';
 import 'package:event_app/features/auth/data/models/request_model/login_request_model.dart';
 import 'package:event_app/features/auth/data/models/request_model/register_request_model.dart';
@@ -9,8 +10,10 @@ import 'package:event_app/features/auth/domain/repositories/auth_repository.dart
 class AuthRepositoryImpl implements AuthRepository {
   const AuthRepositoryImpl({
     required this.authRemoteDataSource,
+    required this.storageService,
   });
   final AuthRemoteDataSource authRemoteDataSource;
+  final SecureStorageService storageService;
 
   @override
   Future<Either<ResponseError, bool>> register({
@@ -37,14 +40,13 @@ class AuthRepositoryImpl implements AuthRepository {
   }) async {
     try {
       final response = await authRemoteDataSource.login(params: params);
-
+      // Store user data in secure storage when login is successful
+      await storageService.saveUserData(response);
       return Right(response);
     } on ResponseError catch (e) {
       return Left(e);
     } catch (e) {
-      return Left(
-        ResponseError(errorStatus: 'Unexpected error during login'),
-      );
+      return Left(ResponseError(errorStatus: 'Unexpected error during login'));
     }
   }
 }
