@@ -11,6 +11,8 @@ class AppTextField extends StatelessWidget {
     this.validator,
     this.textInputType = TextInputType.text,
     this.maxlines = 1,
+    this.suffixIcon,
+    this.obscureText = false,
     super.key,
   });
 
@@ -21,6 +23,8 @@ class AppTextField extends StatelessWidget {
   final TextInputType? textInputType;
   final int? maxlines;
   final String title;
+  final Widget? suffixIcon;
+  final bool obscureText;
 
   @override
   Widget build(BuildContext context) {
@@ -32,22 +36,32 @@ class AppTextField extends StatelessWidget {
           child: Text(
             title,
             style: AppTextStyles()
-                .titleMediumTextStyle(context: context)
+                .titleSmallTextStyle(context: context)
                 ?.copyWith(fontWeight: AppFontWeight().regular),
           ),
         ),
         TextFormField(
+          obscureText: obscureText,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           controller: controller,
           onChanged: onChanged,
           validator: validator,
           keyboardType: textInputType,
-          style: context.theme.textTheme.bodySmall,
+          style: context.theme.textTheme.bodyMedium,
           maxLines: maxlines,
-          onTap: () {
-            FocusManager.instance.primaryFocus!.unfocus();
-          },
-          decoration: InputDecoration(hintText: hintText),
+          //!TODO With The Keyboard Dismissal Widget
+          // onTap: () {
+          //   FocusManager.instance.primaryFocus!.unfocus();
+          // },
+          decoration: InputDecoration(
+            hintText: hintText,
+            suffixIcon: suffixIcon,
+            hintStyle:
+                AppTextStyles().labelLargeTextStyle(context: context)?.copyWith(
+                      fontWeight: AppFontWeight().regular,
+                      color: Colors.grey.shade600,
+                    ),
+          ),
         ),
       ],
     );

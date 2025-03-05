@@ -1,4 +1,5 @@
 import 'package:event_app/features/auth/presentation/view/sign_in_screen.dart';
+import 'package:event_app/features/auth/presentation/view/sign_up_screen.dart';
 import 'package:event_app/features/auth/presentation/view/splash_screen.dart';
 import 'package:event_app/utils/extension/string_extenstion.dart';
 import 'package:event_app/utils/navigation/app_page_transition_builder.dart';
@@ -30,7 +31,7 @@ class AppRouterNavigationDelegate {
         name: AppRouteNames().signUpRoute.convertRouteToName,
         pageBuilder: (context, state) => PageTransitionBuilder.transition(
           pageKey: state.pageKey,
-          child: const Scaffold(),
+          child: const SignUpScreen(),
         ),
       ),
       GoRoute(

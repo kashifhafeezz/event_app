@@ -3,5 +3,118 @@
     "login" : "LOGIN",
     "@login" : {
         "description": "Login screen title text"
+    },
+    "login_small" : "Login",
+    "@login_small" : {
+        "description": "Login screen button text"
+    },
+    "email" : "Email",
+    "@email" : {
+        "description": "Login screen Email Field Text"
+    },
+    "enter_a_email" : "Enter a email",
+    "@enter_a_email" : {
+        "description":"Login screen Email Field Hint Text"
+    },
+    "password" : "Password",
+    "@password" : {
+        "description":"Login screen Password Field Text"
+    },
+    "enter_a_password" : "Enter a password",
+    "@enter_a_password" : {
+        "description":"Login screen Password Field Hint Text"
+    },
+    "forget_password" : "Forget Password",
+    "@forget_password" : {
+        "description": "Login screen Forget Password Text"
+    },
+    "create_an_account" : "Or Create an Account",
+    "@create_an_account" : {
+        "description": "Login screen Create Account Text"
+    },
+    "registration" : "Registration",
+    "@registration" : {
+        "description": "Register screen title text"
+    },
+    "full_name" : "Full Name",
+    "@full_name" : {
+        "description": "Register screen Field Full Name text"
+    },
+    "full_name_hint" : "Enter your full name here",
+    "@full_name_hint" : {
+        "description": "Register screen Field Full Name Hint text"
+    },
+    "optional" : "Optional",
+    "@optional" : {
+        "description": "Register Screen Optional Field Text"
+    },
+    "mobile_number" : "Mobile Number",
+    "@mobile_number" : {
+        "description":  "Register screen Field Mobile Number text"
+    },
+    "mobile_number_hint" : "Enter your mobile number",
+    "@mobile_number_hint" : {
+        "description":  "Register screen Field Mobile Number text"
+    },
+    "instagram" : "Instagram",
+    "@instagram" : {
+        "description": "Register screen Field Instagram text"
+    },
+    "instagram_hint" : "Enter your instagram account",
+    "@instagram_hint" : {
+        "description": "Register screen Field Instagram hint text"
+    },
+    "tiktok" : "TikTok",
+    "@tiktok" : {
+        "description": "Register screen Field TikTok text"
+    },
+    "tiktok_hint" : "Enter your tiktok account",
+    "@tiktok_hint" : {
+        "description": "Register screen Field TikTok hint text"
+    },
+    "user_consent" : "By ticking this box, you give your consent to L'Orèal to process the provided data for the following purposes: Fulfilling L'Orèal requirements to report and record the identity of the attendees in its activities and events Use for compliance purposes and reporting according to L'Orèal and country-specific compliance regulations and code of conduct.",
+    "@user_consent" : {
+        "description": "Register Screen User Consent Check Box Text"
+    },
+    "register" : "Register",
+    "@register" : {
+        "description": "Register screen register button text"
+    },
+    "login_to_an_account" : "Or Login to an Account",
+    "@login_to_an_account" : {
+        "description": "Register screen Or Login to an Account button text"
+    },
+
+    "select_speciality" : "Select Speciality",
+    "@select_speciality" : {
+        "description": "Register screen Speciality drop down text"
+    },
+    "select_speciality_hint" : "Select your Speciality",
+    "@select_speciality_hint" : {
+        "description": "Register screen Speciality drop down hint"
+    },
+    "select_country" : "Select Country",
+    "@select_country" : {
+        "description": "Register screen Country drop down text"
+    },
+    "select_country_hint" : "Select your Country",
+    "@select_country_hint" : {
+        "description": "Register screen Country drop down hint"
+    },
+    "registered_successfully": "Registered Successfully!",
+    "@registered_successfully" : {
+        "description": "Register screen register button snack bar success message"
+    },
+    "fill_out_all_the_fields": "Oops! Please fill out all the required fields.",
+    "@fill_out_all_the_fields" : {
+        "description": "Register screen register button snack bar failure message"
+    },
+    "login_successfully" : "Login Successfully!",
+    "@login_successfully" : {
+        "description": "Login Screen Login Button snack bar success message."
+    },
+    "make_sure_to_provide" : "Please make sure to provide both your email and password to continue.",
+    "@make_sure_to_provide" : {
+        "description": "Login Screen Login Button snack bar failure message"
     }
 }

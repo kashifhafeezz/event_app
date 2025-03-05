@@ -1,7 +1,119 @@
 {
     "@@locale": "ar",
-    "login" : "تسجيل الدخول",
-    "@login" : {
+    "login": "تسجيل الدخول",
+    "@login": {
         "description": "نص عنوان شاشة تسجيل الدخول"
+    },
+    "login_small": "تسجيل الدخول",
+    "@login_small": {
+        "description": "نص عنوان شاشة تسجيل الدخول"
+    },
+    "email": "بريد إلكتروني",
+    "@email": {
+        "description": "شاشة تسجيل الدخول حقل البريد الإلكتروني النصي"
+    },
+    "enter_a_email": "أدخل بريدًا إلكترونيًا",
+    "@enter_a_email": {
+        "description": "شاشة تسجيل الدخول حقل البريد الإلكتروني تلميح النص"
+    },
+    "password": "كلمة المرور",
+    "@password": {
+        "description": "شاشة تسجيل الدخول حقل كلمة المرور النص"
+    },
+    "enter_a_password": "أدخل كلمة المرور",
+    "@enter_a_password": {
+        "description": "شاشة تسجيل الدخول حقل كلمة المرور نص التلميح"
+    },
+    "forget_password": "نسيت كلمة المرور",
+    "@forget_password": {
+        "description": "شاشة تسجيل الدخول نسيت كلمة المرور"
+    },
+    "create_an_account": "أو إنشاء حساب",
+    "@create_an_account": {
+        "description": "شاشة تسجيل الدخول إنشاء حساب نص"
+    },
+    "registration": "التسجيل",
+    "@registration": {
+        "description": "نص عنوان شاشة التسجيل"
+    },
+    "full_name": "الاسم الكامل",
+    "@full_name": {
+        "description": "نص حقل الاسم الكامل في شاشة التسجيل"
+    },
+    "full_name_hint": "أدخل اسمك الكامل هنا",
+    "@full_name_hint": {
+        "description": "نص تلميح حقل الاسم الكامل في شاشة التسجيل"
+    },
+    "optional": "اختياري",
+    "@optional": {
+        "description": "نص الحقل الاختياري في شاشة التسجيل"
+    },
+    "mobile_number": "رقم الهاتف المحمول",
+    "@mobile_number": {
+        "description": "نص حقل رقم الهاتف المحمول في شاشة التسجيل"
+    },
+    "mobile_number_hint": "أدخل رقم هاتفك المحمول",
+    "@mobile_number_hint": {
+        "description": "نص تلميح حقل رقم الهاتف المحمول في شاشة التسجيل"
+    },
+    "instagram": "إنستاجرام",
+    "@instagram": {
+        "description": "نص حقل إنستاجرام في شاشة التسجيل"
+    },
+    "instagram_hint": "أدخل حسابك على إنستاجرام",
+    "@instagram_hint": {
+        "description": "نص تلميح حقل إنستاجرام في شاشة التسجيل"
+    },
+    "tiktok": "تيك توك",
+    "@tiktok": {
+        "description": "نص حقل تيك توك في شاشة التسجيل"
+    },
+    "tiktok_hint": "أدخل حسابك على تيك توك",
+    "@tiktok_hint": {
+        "description": "نص تلميح حقل تيك توك في شاشة التسجيل"
+    },
+    "user_consent": "بالتوقيع على هذا المربع، أنت توافق على معالجة L'Orèal للبيانات المقدمة للأغراض التالية: تلبية متطلبات L'Orèal للإبلاغ وتسجيل هوية الحضور في أنشطتها وفعالياتها. استخدامها لأغراض الامتثال والإبلاغ وفقًا للوائح الامتثال المحددة من قبل L'Orèal والقوانين المحلية وقواعد السلوك.",
+    "@user_consent": {
+        "description": "نص مربع اختيار موافقة المستخدم في شاشة التسجيل"
+    },
+    "register": "تسجيل",
+    "@register": {
+        "description": "نص زر التسجيل في شاشة التسجيل"
+    },
+    "login_to_an_account": "أو تسجيل الدخول إلى حساب",
+    "@login_to_an_account": {
+        "description": "نص زر أو تسجيل الدخول إلى حساب في شاشة التسجيل"
+    },
+    "select_speciality": "اختر التخصص",
+    "@select_speciality": {
+        "description": "نص قائمة التخصص المنسدلة في شاشة التسجيل"
+    },
+    "select_speciality_hint": "اختر تخصصك",
+    "@select_speciality_hint": {
+        "description": "نص تلميح قائمة التخصص المنسدلة في شاشة التسجيل"
+    },
+    "select_country": "اختر الدولة",
+    "@select_country": {
+        "description": "نص قائمة الدول المنسدلة في شاشة التسجيل"
+    },
+    "select_country_hint": "اختر دولتك",
+    "@select_country_hint": {
+        "description": "نص تلميح قائمة الدول المنسدلة في شاشة التسجيل"
+    },
+    "registered_successfully": "تم التسجيل بنجاح!",
+    "@registered_successfully": {
+        "description": "رسالة النجاح في شريط الإعلام عند التسجيل في شاشة التسجيل"
+    },
+    "fill_out_all_the_fields": "عذرًا! يرجى ملء جميع الحقول المطلوبة.",
+    "@fill_out_all_the_fields": {
+        "description": "رسالة الفشل في شريط الإعلام عند التسجيل في شاشة التسجيل"
+    },
+    "login_successfully": "تم تسجيل الدخول بنجاح!",
+    "@login_successfully": {
+        "description": "رسالة النجاح في شريط الإعلام عند الضغط على زر تسجيل الدخول في شاشة تسجيل الدخول."
+    },
+    "make_sure_to_provide": "يرجى التأكد من توفير بريدك الإلكتروني وكلمة المرور للمتابعة.",
+    "@make_sure_to_provide": {
+        "description": "رسالة الفشل في شريط الإعلام عند الضغط على زر تسجيل الدخول في شاشة تسجيل الدخول."
     }
 }

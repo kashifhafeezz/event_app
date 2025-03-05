@@ -10,7 +10,7 @@ class AppTheme {
   ThemeData get lightTheme => _lightTheme;
   ThemeData get darkTheme => _darkTheme;
   static BorderRadius textFieldBorderRadius = BorderRadius.circular(10);
-  static double textFieldBorderWidth = 0.8;
+  static double textFieldBorderWidth = 1;
 
   static TextStyle style = const TextStyle(
     fontFamily: FontFamily.poppins,
@@ -111,6 +111,39 @@ class AppTheme {
         ),
       ),
     ),
+    dropdownMenuTheme: DropdownMenuThemeData(
+      inputDecorationTheme: InputDecorationTheme(
+        enabledBorder: OutlineInputBorder(
+          borderRadius: textFieldBorderRadius,
+          borderSide: BorderSide(
+            width: textFieldBorderWidth,
+            color: Colors.grey,
+          ),
+        ),
+        border: OutlineInputBorder(
+          borderRadius: textFieldBorderRadius,
+          borderSide: BorderSide(width: textFieldBorderWidth),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: textFieldBorderRadius,
+          borderSide: BorderSide(width: textFieldBorderWidth),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: textFieldBorderRadius,
+          borderSide: BorderSide(
+            width: textFieldBorderWidth,
+            color: AppColors().alert,
+          ),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: textFieldBorderRadius,
+          borderSide: BorderSide(
+            width: textFieldBorderWidth,
+            color: AppColors().alert,
+          ),
+        ),
+      ),
+    ),
   );
 
   ///------- Dark Theme -------///
@@ -155,6 +188,39 @@ class AppTheme {
         borderSide: BorderSide(
           width: textFieldBorderWidth,
           color: AppColors().alert,
+        ),
+      ),
+    ),
+    dropdownMenuTheme: DropdownMenuThemeData(
+      inputDecorationTheme: InputDecorationTheme(
+        enabledBorder: OutlineInputBorder(
+          borderRadius: textFieldBorderRadius,
+          borderSide: BorderSide(
+            width: textFieldBorderWidth,
+            color: Colors.grey,
+          ),
+        ),
+        border: OutlineInputBorder(
+          borderRadius: textFieldBorderRadius,
+          borderSide: BorderSide(width: textFieldBorderWidth),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: textFieldBorderRadius,
+          borderSide: BorderSide(width: textFieldBorderWidth),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: textFieldBorderRadius,
+          borderSide: BorderSide(
+            width: textFieldBorderWidth,
+            color: AppColors().alert,
+          ),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: textFieldBorderRadius,
+          borderSide: BorderSide(
+            width: textFieldBorderWidth,
+            color: AppColors().alert,
+          ),
         ),
       ),
     ),

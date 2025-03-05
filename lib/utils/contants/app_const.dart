@@ -5,5 +5,5 @@ class AppConst {
 
   static final AppConst _singleton = AppConst._internal();
 
-  double screenHorizontalPadding = 18;
+  double screenHorizontalPadding = 20;
 }
