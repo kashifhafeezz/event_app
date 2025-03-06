@@ -1,4 +1,6 @@
 import 'package:event_app/core/localization/l10n/l10n.dart';
+import 'package:event_app/features/ask_question/data/models/request_model/ask_question_request_model.dart';
+import 'package:event_app/features/ask_question/presentation/manager/ask_question_bloc/ask_question_bloc.dart';
 import 'package:event_app/features/auth/presentation/widget/auth_validation.dart';
 import 'package:event_app/features/speakers/presentation/manager/speaker_bloc/speaker_bloc.dart';
 import 'package:event_app/utils/common/app_button.dart';
@@ -8,7 +10,9 @@ import 'package:event_app/utils/common/app_header_widget.dart';
 import 'package:event_app/utils/common/app_text_field.dart';
 import 'package:event_app/utils/common/common_app_bar.dart';
 import 'package:event_app/utils/constants/app_const.dart';
+import 'package:event_app/utils/constants/app_snack_bar.dart';
 import 'package:event_app/utils/di/di_container.dart';
+import 'package:event_app/utils/navigation/app_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,12 +30,14 @@ class _AskQuestionScreenState extends State<AskQuestionScreen> {
   final youNameController = TextEditingController();
   final askQuestionController = TextEditingController();
   late SpeakerBloc speakerBloc;
+  late AskQuestionBloc askQuestionBloc;
 
   @override
   void initState() {
     super.initState();
     speakerBloc = di.get<SpeakerBloc>();
     speakerBloc.add(FetchSpeakers());
+    askQuestionBloc = di.get<AskQuestionBloc>();
   }
 
   @override
@@ -40,6 +46,7 @@ class _AskQuestionScreenState extends State<AskQuestionScreen> {
     youNameController.dispose();
     askQuestionController.dispose();
     speakerBloc.close();
+    askQuestionBloc.close();
     super.dispose();
   }
 
@@ -63,6 +70,7 @@ class _AskQuestionScreenState extends State<AskQuestionScreen> {
               AppHeaderWidget(title: context.l10n.ask_question),
               _fields(context),
               _submitButton(context),
+              const SizedBox(height: 30),
             ],
           ),
         ),
@@ -71,11 +79,46 @@ class _AskQuestionScreenState extends State<AskQuestionScreen> {
   }
 
   Widget _submitButton(BuildContext context) {
-    return AppButton(
-      text: context.l10n.submit,
-      onPressed: () {
-        if (formkey.currentState!.validate()) {}
-      },
+    return BlocProvider.value(
+      value: askQuestionBloc,
+      child: BlocConsumer<AskQuestionBloc, AskQuestionState>(
+        listener: (BuildContext context, state) {
+          if (state is AskQuestionErrorState) {
+            AppSnackBar().showErrorSnackBar(
+              context: context,
+              errorMessage: state.errorMessage,
+            );
+          }
+
+          if (state is AskQuestionLoadedState) {
+            AppSnackBar().showSuccessSnackBar(
+              context: context,
+              successMessage: 'Request Submitted Successfully',
+            );
+            AppNavigation().navigateBack(context: context);
+          }
+        },
+        builder: (context, state) {
+          return AppButton(
+            text: context.l10n.submit,
+            isLoading: state is AskQuestionLoadingState,
+            onPressed: () {
+              if (formkey.currentState!.validate()) {
+                askQuestionBloc.add(
+                  SubmitQuestionEvent(
+                    requestModel: AskQuestionRequestModel(
+                      eventId: 1,
+                      speakerName: selectedSession.value.toString(),
+                      askedBy: youNameController.text,
+                      questionDetail: askQuestionController.text,
+                    ),
+                  ),
+                );
+              }
+            },
+          );
+        },
+      ),
     );
   }
 

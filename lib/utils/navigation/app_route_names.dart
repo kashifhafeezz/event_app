@@ -20,4 +20,6 @@ class AppRouteNames {
   final String speakerListingRoute = '/speaker-listing-screen';
 
   final String speakerDetailRoute = '/speaker-detail-screen';
+
+  final String settingRoute = '/setting-screen';
 }

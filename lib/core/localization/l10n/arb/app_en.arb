@@ -1,231 +1,244 @@
 {
     "@@locale": "en",
-    "login" : "LOGIN",
-    "@login" : {
+    "login": "LOGIN",
+    "@login": {
         "description": "Login screen title text"
     },
-    "login_small" : "Login",
-    "@login_small" : {
+    "login_small": "Login",
+    "@login_small": {
         "description": "Login screen button text"
     },
-    "email" : "Email",
-    "@email" : {
+    "email": "Email",
+    "@email": {
         "description": "Login screen Email Field Text"
     },
-    "enter_a_email" : "Enter a email",
-    "@enter_a_email" : {
-        "description":"Login screen Email Field Hint Text"
+    "enter_a_email": "Enter a email",
+    "@enter_a_email": {
+        "description": "Login screen Email Field Hint Text"
     },
-    "password" : "Password",
-    "@password" : {
-        "description":"Login screen Password Field Text"
+    "password": "Password",
+    "@password": {
+        "description": "Login screen Password Field Text"
     },
-    "enter_a_password" : "Enter a password",
-    "@enter_a_password" : {
-        "description":"Login screen Password Field Hint Text"
+    "enter_a_password": "Enter a password",
+    "@enter_a_password": {
+        "description": "Login screen Password Field Hint Text"
     },
-    "forget_password" : "Forget Password",
-    "@forget_password" : {
+    "forget_password": "Forget Password",
+    "@forget_password": {
         "description": "Login screen Forget Password Text"
     },
-    "create_an_account" : "Or Create an Account",
-    "@create_an_account" : {
+    "create_an_account": "Or Create an Account",
+    "@create_an_account": {
         "description": "Login screen Create Account Text"
     },
-    "registration" : "Registration",
-    "@registration" : {
+    "registration": "Registration",
+    "@registration": {
         "description": "Register screen title text"
     },
-    "full_name" : "Full Name",
-    "@full_name" : {
+    "full_name": "Full Name",
+    "@full_name": {
         "description": "Register screen Field Full Name text"
     },
-    "full_name_hint" : "Enter your full name here",
-    "@full_name_hint" : {
+    "full_name_hint": "Enter your full name here",
+    "@full_name_hint": {
         "description": "Register screen Field Full Name Hint text"
     },
-    "optional" : "Optional",
-    "@optional" : {
+    "optional": "Optional",
+    "@optional": {
         "description": "Register Screen Optional Field Text"
     },
-    "mobile_number" : "Mobile Number",
-    "@mobile_number" : {
-        "description":  "Register screen Field Mobile Number text"
+    "mobile_number": "Mobile Number",
+    "@mobile_number": {
+        "description": "Register screen Field Mobile Number text"
     },
-    "mobile_number_hint" : "Enter your mobile number",
-    "@mobile_number_hint" : {
-        "description":  "Register screen Field Mobile Number text"
+    "mobile_number_hint": "Enter your mobile number",
+    "@mobile_number_hint": {
+        "description": "Register screen Field Mobile Number text"
     },
-    "instagram" : "Instagram",
-    "@instagram" : {
+    "instagram": "Instagram",
+    "@instagram": {
         "description": "Register screen Field Instagram text"
     },
-    "instagram_hint" : "Enter your instagram account",
-    "@instagram_hint" : {
+    "instagram_hint": "Enter your instagram account",
+    "@instagram_hint": {
         "description": "Register screen Field Instagram hint text"
     },
-    "tiktok" : "TikTok",
-    "@tiktok" : {
+    "tiktok": "TikTok",
+    "@tiktok": {
         "description": "Register screen Field TikTok text"
     },
-    "tiktok_hint" : "Enter your tiktok account",
-    "@tiktok_hint" : {
+    "tiktok_hint": "Enter your tiktok account",
+    "@tiktok_hint": {
         "description": "Register screen Field TikTok hint text"
     },
-    "user_consent" : "By ticking this box, you give your consent to L'Orèal to process the provided data for the following purposes: Fulfilling L'Orèal requirements to report and record the identity of the attendees in its activities and events Use for compliance purposes and reporting according to L'Orèal and country-specific compliance regulations and code of conduct.",
-    "@user_consent" : {
+    "user_consent": "By ticking this box, you give your consent to L'Orèal to process the provided data for the following purposes: Fulfilling L'Orèal requirements to report and record the identity of the attendees in its activities and events Use for compliance purposes and reporting according to L'Orèal and country-specific compliance regulations and code of conduct.",
+    "@user_consent": {
         "description": "Register Screen User Consent Check Box Text"
     },
-    "register" : "Register",
-    "@register" : {
+    "register": "Register",
+    "@register": {
         "description": "Register screen register button text"
     },
-    "login_to_an_account" : "Or Login to an Account",
-    "@login_to_an_account" : {
+    "login_to_an_account": "Or Login to an Account",
+    "@login_to_an_account": {
         "description": "Register screen Or Login to an Account button text"
     },
-
-    "select_speciality" : "Select Speciality",
-    "@select_speciality" : {
+    "select_speciality": "Select Speciality",
+    "@select_speciality": {
         "description": "Register screen Speciality drop down text"
     },
-    "select_speciality_hint" : "Select your Speciality",
-    "@select_speciality_hint" : {
+    "select_speciality_hint": "Select your Speciality",
+    "@select_speciality_hint": {
         "description": "Register screen Speciality drop down hint"
     },
-    "select_country" : "Select Country",
-    "@select_country" : {
+    "select_country": "Select Country",
+    "@select_country": {
         "description": "Register screen Country drop down text"
     },
-    "select_country_hint" : "Select your Country",
-    "@select_country_hint" : {
+    "select_country_hint": "Select your Country",
+    "@select_country_hint": {
         "description": "Register screen Country drop down hint"
     },
     "registered_successfully": "Registered Successfully!",
-    "@registered_successfully" : {
+    "@registered_successfully": {
         "description": "Register screen register button snack bar success message"
     },
     "fill_out_all_the_fields": "Oops! Please fill out all the required fields.",
-    "@fill_out_all_the_fields" : {
+    "@fill_out_all_the_fields": {
         "description": "Register screen register button snack bar failure message"
     },
-    "login_successfully" : "Login Successfully!",
-    "@login_successfully" : {
+    "login_successfully": "Login Successfully!",
+    "@login_successfully": {
         "description": "Login Screen Login Button snack bar success message."
     },
-    "make_sure_to_provide" : "Please make sure to provide both your email and password to continue.",
-    "@make_sure_to_provide" : {
+    "make_sure_to_provide": "Please make sure to provide both your email and password to continue.",
+    "@make_sure_to_provide": {
         "description": "Login Screen Login Button snack bar failure message"
     },
-    "full_name_required" : "Full name is required",
-    "@full_name_required" : {
+    "full_name_required": "Full name is required",
+    "@full_name_required": {
         "description": "Register Screen field Full name validation"
     },
-    "email_required" : "Email is required",
-    "@email_required" : {
+    "email_required": "Email is required",
+    "@email_required": {
         "description": "Register Screen field Email validation"
     },
-    "valid_email" : "Enter a valid email",
-    "@valid_email" : {
+    "valid_email": "Enter a valid email",
+    "@valid_email": {
         "description": "Register Screen field Valid Email validation"
     },
-    "password_required" : "Password is required",
-    "@password_required" : {
+    "password_required": "Password is required",
+    "@password_required": {
         "description": "Register Screen field Password validation"
     },
-    "valid_password" : "Password must be at least 6 characters",
-    "@valid_password" : {
+    "valid_password": "Password must be at least 6 characters",
+    "@valid_password": {
         "description": "Register Screen field Valid Password validation"
     },
-    "please_select_speciality" : "Please select a speciality",
-    "@please_select_speciality" : {
+    "please_select_speciality": "Please select a speciality",
+    "@please_select_speciality": {
         "description": "Register Screen field speciality validation"
     },
-    "please_select_country" : "Please select a country",
-    "@please_select_country" : {
+    "please_select_country": "Please select a country",
+    "@please_select_country": {
         "description": "Register Screen field country validation"
     },
-    "welcome" : "Welcome",
-    "@welcome" : {
+    "welcome": "Welcome",
+    "@welcome": {
         "description": "Home Screen app bar title"
     },
-    "home" : "Home",
-    "@home" : {
+    "home": "Home",
+    "@home": {
         "description": "Home Screen drawer text"
     },
-    "back" : "Back",
-    "@back" : {
+    "back": "Back",
+    "@back": {
         "description": "App Common App Bar Back text"
     },
-    "agenda" : "AGENDA",
-    "@agenda" : {
+    "agenda": "AGENDA",
+    "@agenda": {
         "description": "Agenda screen title"
     },
-    "time" : "Time",
-    "@time":{
+    "time": "Time",
+    "@time": {
         "description": "Agenda screen time text"
     },
-    "details" : "Details",
-    "@details":{
+    "details": "Details",
+    "@details": {
         "description": "Agenda screen details text"
     },
-    "day" : "Day",
-    "@day":{
+    "day": "Day",
+    "@day": {
         "description": "Agenda screen Day text"
     },
     "scan_qr_code": "SCAN THIS QR CODE FOR ATTENDANCE",
-    "@scan_qr_code" : {
+    "@scan_qr_code": {
         "description": "Badge Screen qr code scan bottom text"
     },
-    "speakers" : "SPEAKERS",
-    "@speakers" : {
-        "description": "Speaker screen title" 
+    "speakers": "SPEAKERS",
+    "@speakers": {
+        "description": "Speaker screen title"
     },
-    "ask_question" : "ASK QUESTION",
-    "@ask_question" : {
-        "description": "Ask question screen title" 
+    "ask_question": "ASK QUESTION",
+    "@ask_question": {
+        "description": "Ask question screen title"
     },
-
-
-    "select_session" : "Select Session",
-    "@select_session" : {
+    "select_session": "Select Session",
+    "@select_session": {
         "description": "Ask question screen Select session drop down title"
     },
-    "select_session_hint" : "Select speaker",
-    "@select_session_hint" : {
+    "select_session_hint": "Select speaker",
+    "@select_session_hint": {
         "description": "Ask question screen Select session drop down hint"
     },
-    "your_name" : "Your Name",
-    "@your_name" : {
+    "your_name": "Your Name",
+    "@your_name": {
         "description": "Ask question screen your name field title"
     },
-    "your_name_hint" : "Enter your name here",
-    "@your_name_hint" : {
+    "your_name_hint": "Enter your name here",
+    "@your_name_hint": {
         "description": "Ask question screen your name field hint"
     },
-
-    "ask_question_field" : "Ask Question",
-    "@ask_question_field" : {
+    "ask_question_field": "Ask Question",
+    "@ask_question_field": {
         "description": "Ask question field title"
     },
-    "ask_question_field_hint" : "Write your Question here",
-    "@ask_question_field_hint" : {
+    "ask_question_field_hint": "Write your Question here",
+    "@ask_question_field_hint": {
         "description": "Ask question field hint"
     },
-    "select_speaker" : "Select Speaker",
-    "@select_speaker" : {
+    "select_speaker": "Select Speaker",
+    "@select_speaker": {
         "description": "Ask question Select Speaker validation"
     },
-    "name_is_required" : "Name is required",
-    "@name_is_required" : {
+    "name_is_required": "Name is required",
+    "@name_is_required": {
         "description": "Ask question Your Name validation"
     },
-    "question_is_required" : "Question is required",
-    "@question_is_required" : {
+    "question_is_required": "Question is required",
+    "@question_is_required": {
         "description": "Ask question validation"
     },
-    "submit":"Submit",
-    "@submit" : {
+    "submit": "Submit",
+    "@submit": {
         "description": "Ask question Submit Button"
+    },
+    "language": "Language",
+    "@language": {
+        "description": "Setting Screen Language"
+    },
+    "theme": "Theme",
+    "@theme": {
+        "description": "Setting Screen Theme"
+    },
+    "light_theme": "Light",
+    "@light_theme": {
+        "description": "Setting Screen Light Theme"
+    },
+    "dark_theme": "Dark",
+    "@dark_theme": {
+        "description": "Setting Screen Dark Theme"
     }
+
 }

@@ -8,4 +8,5 @@ class ApiRoutes {
   String register = '/RegisterUser';
   String agenda = '/LoadAgenda';
   String speakers = '/LoadSpeakers';
+  String askQuestion = '/AskQuestion';
 }

@@ -20,10 +20,9 @@ class SpeakerDetailScreen extends StatelessWidget {
           children: [
             const AppHeaderWidget(),
             Container(
-              height: context.mqHeight * 0.56,
               width: context.mqWidth - 30,
               margin: const EdgeInsets.only(top: 35),
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(12),
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
@@ -37,68 +36,60 @@ class SpeakerDetailScreen extends StatelessWidget {
                 ],
               ),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CachedNetworkImage(
-                    imageUrl: speakerModel.speakerImage,
-                    width: 220,
-                    height: 220,
-                    errorWidget: (context, url, error) {
-                      return CircleAvatar(
-                        backgroundColor: context.colorScheme.primary,
-                        radius: 27,
-                        child: Icon(
-                          Icons.image_not_supported_rounded,
-                          color: context.colorScheme.onPrimary,
-                          size: 28,
-                        ),
-                      );
+                  Center(
+                    child: CachedNetworkImage(
+                      imageUrl: speakerModel.speakerImage,
+                      width: 220,
+                      height: 220,
+                      errorWidget: (context, url, error) {
+                        return CircleAvatar(
+                          backgroundColor: context.colorScheme.primary,
+                          radius: 27,
+                          child: Icon(
+                            Icons.image_not_supported_rounded,
+                            color: context.colorScheme.onPrimary,
+                            size: 28,
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 50),
+                  Html(
+                    data: speakerModel.speakerDesignation,
+                    style: {
+                      'p': Style(
+                        color: Colors.grey.shade600,
+                        fontWeight: AppFontWeight().regular,
+                        padding: HtmlPaddings.zero,
+                        margin: Margins.zero,
+                      ),
+                      'strong': Style(
+                        fontWeight: FontWeight.bold,
+                      ),
+                      'a': Style(
+                        color: Colors.blue,
+                        textDecoration: TextDecoration.underline,
+                      ),
                     },
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Text(
-                      //   speakerModel.speakerDesignation,
-
-                      //   style: AppTextStyles()
-                      //       .labelLargeTextStyle(context: context),
-                      // ),
-                      Html(
-                        data: speakerModel.speakerDesignation,
-                        style: {
-                          'p': Style(
-                            color: Colors.grey.shade600,
-                            fontWeight: AppFontWeight().regular,
-                            padding: HtmlPaddings.zero,
-                            margin: Margins.zero,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5, bottom: 10, left: 8),
+                    child: Text(
+                      speakerModel.speakerName,
+                      style: AppTextStyles()
+                          .titleLargeTextStyle(
+                            context: context,
+                            textColor: context.colorScheme.primary,
+                          )
+                          ?.copyWith(
+                            fontWeight: AppFontWeight().semiBold,
                           ),
-                          'strong': Style(
-                            fontWeight: FontWeight.bold,
-                          ),
-                          'a': Style(
-                            color: Colors.blue,
-                            textDecoration: TextDecoration.underline,
-                          ),
-                        },
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsets.only(top: 5, bottom: 10, left: 8),
-                        child: Text(
-                          speakerModel.speakerName,
-                          style: AppTextStyles()
-                              .titleLargeTextStyle(
-                                context: context,
-                                textColor: context.colorScheme.primary,
-                              )
-                              ?.copyWith(
-                                fontWeight: AppFontWeight().semiBold,
-                              ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
+                  const SizedBox(height: 30),
                 ],
               ),
             ),

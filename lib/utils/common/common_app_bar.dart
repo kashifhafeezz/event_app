@@ -18,7 +18,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: context.colorScheme.onPrimary,
+      backgroundColor: context.colorScheme.surface,
       leadingWidth: 20,
       leading: IconButton(
         icon: const Icon(Icons.arrow_back_ios_rounded),

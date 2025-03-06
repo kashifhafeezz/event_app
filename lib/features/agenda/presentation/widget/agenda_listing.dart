@@ -53,7 +53,7 @@ class AgendaListing extends StatelessWidget {
               return const SizedBox();
             }
             return Padding(
-              padding: const EdgeInsets.only(left: 20, top: 20, bottom: 20),
+              padding: const EdgeInsets.all(16),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

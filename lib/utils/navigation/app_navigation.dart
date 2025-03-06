@@ -47,4 +47,8 @@ class AppNavigation {
       extra: speakerModel,
     );
   }
+
+  void navigateToSetting({required BuildContext context}) {
+    context.pushNamed(_routeNames.settingRoute.convertRouteToName);
+  }
 }

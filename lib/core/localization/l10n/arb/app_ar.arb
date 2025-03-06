@@ -224,5 +224,21 @@
     "submit": "إرسال",
     "@submit": {
         "description": "زر إرسال في شاشة طرح السؤال"
+    }, 
+    "language" : "لغة" ,
+    "@language" : {
+        "description": "ضبط لغة الشاشة"
+    },
+    "theme": "السمة",
+    "@theme": {
+        "description": "شاشة الإعدادات - السمة"
+    },
+    "light_theme": "فاتح",
+    "@light_theme": {
+        "description": "شاشة الإعدادات - السمة الفاتحة"
+    },
+    "dark_theme": "داكن",
+    "@dark_theme": {
+        "description": "شاشة الإعدادات - السمة الداكنة"
     }
 }

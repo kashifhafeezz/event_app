@@ -49,7 +49,7 @@ class _BadgeScreenState extends State<BadgeScreen> {
           children: [
             const AppHeaderWidget(),
             Container(
-              height: context.mqHeight * 0.53,
+              // height: context.mqHeight * 0.53,
               width: context.mqWidth - 30,
               margin: const EdgeInsets.only(top: 35),
               padding: const EdgeInsets.all(10),
@@ -66,7 +66,6 @@ class _BadgeScreenState extends State<BadgeScreen> {
                 ],
               ),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ClipRRect(
@@ -80,36 +79,32 @@ class _BadgeScreenState extends State<BadgeScreen> {
                       },
                     ),
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Text(
-                          context.l10n.scan_qr_code,
-                          style: AppTextStyles().labelLargeTextStyle(
-                            context: context,
-                            textColor: Colors.grey,
-                          ),
-                        ),
+                  const SizedBox(height: 30),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Text(
+                      context.l10n.scan_qr_code,
+                      style: AppTextStyles().labelLargeTextStyle(
+                        context: context,
+                        textColor: Colors.grey,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: Center(
-                          child: Text(
-                            '"$doctorName"',
-                            style: AppTextStyles()
-                                .titleLargeTextStyle(
-                                  context: context,
-                                  textColor: context.colorScheme.primary,
-                                )
-                                ?.copyWith(
-                                  fontWeight: AppFontWeight().semiBold,
-                                ),
-                          ),
-                        ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 5),
+                    child: Center(
+                      child: Text(
+                        '"$doctorName"',
+                        style: AppTextStyles()
+                            .titleLargeTextStyle(
+                              context: context,
+                              textColor: context.colorScheme.primary,
+                            )
+                            ?.copyWith(
+                              fontWeight: AppFontWeight().semiBold,
+                            ),
                       ),
-                    ],
+                    ),
                   ),
                 ],
               ),

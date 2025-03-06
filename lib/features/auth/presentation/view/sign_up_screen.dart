@@ -222,7 +222,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
             builder: (context, value, child) {
               return AppDropdown<String>(
                 title: context.l10n.select_speciality,
-                items: AppUtils().specialityListEn,
+                items: AppConst().isArabic
+                    ? AppUtils().specialityListAr
+                    : AppUtils().specialityListEn,
                 selectedValue: value,
                 hintText: context.l10n.select_speciality_hint,
                 onChanged: (newValue) {
@@ -240,7 +242,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
             builder: (context, value, child) {
               return AppDropdown<String>(
                 title: context.l10n.select_country,
-                items: AppUtils().countriesEn,
+                items: AppConst().isArabic
+                    ? AppUtils().countriesAr
+                    : AppUtils().countriesEn,
                 selectedValue: value,
                 hintText: context.l10n.select_country_hint,
                 onChanged: (newValue) {

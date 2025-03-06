@@ -1,6 +1,7 @@
 import 'package:event_app/core/services/secure_storage_service.dart';
 import 'package:event_app/features/Badge/presentation/view/badge_screen.dart';
 import 'package:event_app/features/Home/presentation/view/home_screen.dart';
+import 'package:event_app/features/Home/presentation/view/setting_screen.dart';
 import 'package:event_app/features/agenda/presentation/view/agenda_screen.dart';
 import 'package:event_app/features/ask_question/presentation/view/ask_question_screen.dart';
 import 'package:event_app/features/auth/presentation/view/sign_in_screen.dart';
@@ -114,6 +115,14 @@ class AppRouterNavigationDelegate {
             child: SpeakerDetailScreen(speakerModel: model),
           );
         },
+      ),
+      GoRoute(
+        path: AppRouteNames().settingRoute,
+        name: AppRouteNames().settingRoute.convertRouteToName,
+        pageBuilder: (context, state) => PageTransitionBuilder.transition(
+          pageKey: state.pageKey,
+          child: const SettingScreen(),
+        ),
       ),
     ],
   );

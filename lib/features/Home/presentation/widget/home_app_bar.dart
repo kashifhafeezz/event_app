@@ -54,6 +54,13 @@ class _HomeAppBarState extends State<HomeAppBar> {
       ),
       actions: [
         IconButton(
+          icon: const Icon(Icons.settings, size: 30),
+          color: Colors.white,
+          onPressed: () async {
+            AppNavigation().navigateToSetting(context: context);
+          },
+        ),
+        IconButton(
           icon: const Icon(Icons.logout_rounded, size: 30),
           color: Colors.white,
           onPressed: () async {
