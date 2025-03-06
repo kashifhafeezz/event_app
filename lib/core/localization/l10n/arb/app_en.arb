@@ -180,5 +180,52 @@
     "speakers" : "SPEAKERS",
     "@speakers" : {
         "description": "Speaker screen title" 
+    },
+    "ask_question" : "ASK QUESTION",
+    "@ask_question" : {
+        "description": "Ask question screen title" 
+    },
+
+
+    "select_session" : "Select Session",
+    "@select_session" : {
+        "description": "Ask question screen Select session drop down title"
+    },
+    "select_session_hint" : "Select speaker",
+    "@select_session_hint" : {
+        "description": "Ask question screen Select session drop down hint"
+    },
+    "your_name" : "Your Name",
+    "@your_name" : {
+        "description": "Ask question screen your name field title"
+    },
+    "your_name_hint" : "Enter your name here",
+    "@your_name_hint" : {
+        "description": "Ask question screen your name field hint"
+    },
+
+    "ask_question_field" : "Ask Question",
+    "@ask_question_field" : {
+        "description": "Ask question field title"
+    },
+    "ask_question_field_hint" : "Write your Question here",
+    "@ask_question_field_hint" : {
+        "description": "Ask question field hint"
+    },
+    "select_speaker" : "Select Speaker",
+    "@select_speaker" : {
+        "description": "Ask question Select Speaker validation"
+    },
+    "name_is_required" : "Name is required",
+    "@name_is_required" : {
+        "description": "Ask question Your Name validation"
+    },
+    "question_is_required" : "Question is required",
+    "@question_is_required" : {
+        "description": "Ask question validation"
+    },
+    "submit":"Submit",
+    "@submit" : {
+        "description": "Ask question Submit Button"
     }
 }

@@ -179,5 +179,50 @@
    "speakers": "المتحدثين",
     "@speakers": {
         "description": "عنوان شاشة المتحدثين"
+    },
+    "ask_question": "اطرح سؤال",
+    "@ask_question": {
+        "description": "عنوان شاشة طرح السؤال"
+    },
+
+    "select_session": "اختر الجلسة",
+    "@select_session": {
+        "description": "عنوان قائمة اختيار الجلسة في شاشة طرح السؤال"
+    },
+    "select_session_hint": "اختر اسم المتحدث",
+    "@select_session_hint": {
+        "description": "تلميح قائمة اختيار الجلسة في شاشة طرح السؤال"
+    },
+    "your_name": "اسمك",
+    "@your_name": {
+        "description": "عنوان حقل اسمك في شاشة طرح السؤال"
+    },
+    "your_name_hint": "أدخل اسمك هنا",
+    "@your_name_hint": {
+        "description": "تلميح حقل اسمك في شاشة طرح السؤال"
+    },
+    "ask_question_field": "طرح سؤال",
+    "@ask_question_field": {
+        "description": "عنوان حقل طرح السؤال"
+    },
+    "ask_question_field_hint": "اكتب سؤالك هنا",
+    "@ask_question_field_hint": {
+        "description": "تلميح حقل طرح السؤال"
+    },
+    "select_speaker": "اختر المتحدث",
+    "@select_speaker": {
+        "description": "التحقق من اختيار المتحدث في شاشة طرح السؤال"
+    },
+    "name_is_required": "الاسم مطلوب",
+    "@name_is_required": {
+        "description": "التحقق من حقل الاسم في شاشة طرح السؤال"
+    },
+    "question_is_required": "السؤال مطلوب",
+    "@question_is_required": {
+        "description": "التحقق من حقل السؤال في شاشة طرح السؤال"
+    },
+    "submit": "إرسال",
+    "@submit": {
+        "description": "زر إرسال في شاشة طرح السؤال"
     }
 }

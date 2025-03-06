@@ -100,7 +100,7 @@ class AppUtils {
       iconData: Icons.question_mark_rounded,
       color: Colors.blue.shade300,
       titleAr: 'اطرح الأسئلة',
-      route: '',
+      route: AppRouteNames().askQuestionRoute,
     ),
     HomeViewModel(
       title: 'Voting',

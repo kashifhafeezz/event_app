@@ -66,4 +66,26 @@ class AuthValidation {
 
     return null;
   }
+
+  ///--------- Ask Question ----------///
+  String? validateSession(String? value, BuildContext context) {
+    if (value == null || value.isEmpty) {
+      return context.l10n.select_speaker;
+    }
+    return null;
+  }
+
+  String? validateYourName(String? value, BuildContext context) {
+    if (value == null || value.isEmpty) {
+      return context.l10n.name_is_required;
+    }
+    return null;
+  }
+
+  String? validateAskQuestion(String? value, BuildContext context) {
+    if (value == null || value.isEmpty) {
+      return context.l10n.question_is_required;
+    }
+    return null;
+  }
 }
