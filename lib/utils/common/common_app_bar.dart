@@ -5,8 +5,13 @@ import 'package:event_app/utils/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CommonAppBar({required this.onMenuPressed, super.key});
+  const CommonAppBar({
+    required this.onMenuPressed,
+    this.isSideMenuRequired = true,
+    super.key,
+  });
   final VoidCallback onMenuPressed;
+  final bool isSideMenuRequired;
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -32,11 +37,12 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       actions: [
-        IconButton(
-          icon: const Icon(Icons.menu_rounded, size: 30),
-          color: context.colorScheme.primary,
-          onPressed: onMenuPressed,
-        ),
+        if (isSideMenuRequired)
+          IconButton(
+            icon: const Icon(Icons.menu_rounded, size: 30),
+            color: context.colorScheme.primary,
+            onPressed: onMenuPressed,
+          ),
       ],
     );
   }

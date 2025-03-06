@@ -1,3 +1,4 @@
+import 'package:event_app/features/speakers/data/models/speaker_model.dart';
 import 'package:event_app/utils/extension/string_extenstion.dart';
 import 'package:event_app/utils/navigation/app_route_names.dart';
 import 'package:flutter/material.dart';
@@ -35,5 +36,15 @@ class AppNavigation {
     if (route.isNotEmpty) {
       context.pushNamed(route.convertRouteToName);
     }
+  }
+
+  void navigateToSpeakerDetailScreen({
+    required BuildContext context,
+    required SpeakerModel speakerModel,
+  }) {
+    context.pushNamed(
+      _routeNames.speakerDetailRoute.convertRouteToName,
+      extra: speakerModel,
+    );
   }
 }

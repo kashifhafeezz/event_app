@@ -14,6 +14,12 @@ import 'package:event_app/features/auth/domain/usecases/login_usecase.dart';
 import 'package:event_app/features/auth/domain/usecases/register_usecase.dart';
 import 'package:event_app/features/auth/presentation/manager/login_bloc/login_bloc.dart';
 import 'package:event_app/features/auth/presentation/manager/register_bloc/register_bloc.dart';
+import 'package:event_app/features/speakers/data/datasource/speaker_remote_data_source.dart';
+import 'package:event_app/features/speakers/data/datasource/speaker_remote_data_source_impl.dart';
+import 'package:event_app/features/speakers/data/repository_implementation/speaker_repository_impl.dart';
+import 'package:event_app/features/speakers/domain/repositories/speaker_repository.dart';
+import 'package:event_app/features/speakers/domain/usecases/speaker_usecase.dart';
+import 'package:event_app/features/speakers/presentation/manager/speaker_bloc/speaker_bloc.dart';
 import 'package:event_app/utils/client/api_client.dart';
 import 'package:event_app/utils/constants/api_routes.dart';
 import 'package:get_it/get_it.dart';
@@ -32,6 +38,7 @@ void _manageBloc() {
     ..registerLazySingleton<LocaleCubit>(LocaleCubit.new)
     ..registerFactory<RegisterBloc>(() => RegisterBloc(registerUsecase: di()))
     ..registerFactory<LoginBloc>(() => LoginBloc(loginUsecase: di()))
+    ..registerFactory<SpeakerBloc>(() => SpeakerBloc(usecase: di()))
     ..registerFactory<AgendaBloc>(() => AgendaBloc(usecase: di()));
 }
 
@@ -39,7 +46,8 @@ void _manageUseCases() {
   di
     ..registerLazySingleton(() => RegisterUsecase(repo: di()))
     ..registerLazySingleton(() => LoginUsecase(repo: di()))
-    ..registerLazySingleton(() => AgendaUsecase(agendaRepository: di()));
+    ..registerLazySingleton(() => AgendaUsecase(agendaRepository: di()))
+    ..registerLazySingleton(() => SpeakerUsecase(speakerRepository: di()));
 }
 
 void _manageRepositories() {
@@ -58,6 +66,12 @@ void _manageRepositories() {
     )
     ..registerLazySingleton<AgendaRemoteDataSource>(
       () => AgendaRemoteDataSourceImpl(client: di()),
+    )
+    ..registerLazySingleton<SpeakerRepository>(
+      () => SpeakerRepositoryImpl(speakerRemoteDataSource: di()),
+    )
+    ..registerLazySingleton<SpeakerRemoteDataSource>(
+      () => SpeakerRemoteDataSourceImpl(client: di()),
     );
 }
 

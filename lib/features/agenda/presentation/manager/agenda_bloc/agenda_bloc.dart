@@ -16,7 +16,7 @@ class AgendaBloc extends Bloc<AgendaEvent, AgendaState> {
   final AgendaUsecase usecase;
 
   Future<void> _getAgenda(
-    AgendaEvent event,
+    FetchAgenda event,
     Emitter<AgendaState> emit,
   ) async {
     emit(const AgendaLoadingState(agendaList: []));

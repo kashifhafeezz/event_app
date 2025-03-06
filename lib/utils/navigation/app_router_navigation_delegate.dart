@@ -5,6 +5,8 @@ import 'package:event_app/features/agenda/presentation/view/agenda_screen.dart';
 import 'package:event_app/features/auth/presentation/view/sign_in_screen.dart';
 import 'package:event_app/features/auth/presentation/view/sign_up_screen.dart';
 import 'package:event_app/features/auth/presentation/view/splash_screen.dart';
+import 'package:event_app/features/speakers/data/models/speaker_model.dart';
+import 'package:event_app/features/speakers/presentation/view/speaker_detail_screen.dart';
 import 'package:event_app/features/speakers/presentation/view/speaker_listing_screen.dart';
 import 'package:event_app/utils/extension/string_extenstion.dart';
 import 'package:event_app/utils/navigation/app_page_transition_builder.dart';
@@ -104,10 +106,13 @@ class AppRouterNavigationDelegate {
       GoRoute(
         path: AppRouteNames().speakerDetailRoute,
         name: AppRouteNames().speakerDetailRoute.convertRouteToName,
-        pageBuilder: (context, state) => PageTransitionBuilder.transition(
-          pageKey: state.pageKey,
-          child: const Scaffold(),
-        ),
+        pageBuilder: (context, state) {
+          final model = state.extra! as SpeakerModel;
+          return PageTransitionBuilder.transition(
+            pageKey: state.pageKey,
+            child: SpeakerDetailScreen(speakerModel: model),
+          );
+        },
       ),
     ],
   );
