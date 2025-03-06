@@ -144,5 +144,9 @@
     "please_select_country" : "Please select a country",
     "@please_select_country" : {
         "description": "Register Screen field country validation"
-    } 
+    },
+    "welcome" : "Welcome",
+    "@welcome" : {
+        "description": "Home Screen app bar title"
+    }
 }

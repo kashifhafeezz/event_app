@@ -1,6 +1,10 @@
 import 'dart:developer';
+import 'package:event_app/core/localization/l10n/l10n.dart';
 import 'package:event_app/core/services/secure_storage_service.dart';
 import 'package:event_app/features/auth/data/models/response_model/login_response_model.dart';
+import 'package:event_app/utils/extension/context_extension.dart';
+import 'package:event_app/utils/navigation/app_navigation.dart';
+import 'package:event_app/utils/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,12 +16,21 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late Future<LoginResponseModel?> _userDataFuture;
-  final SecureStorageService _storageService = SecureStorageService();
+  final _storageService = SecureStorageService();
+  String docName = '';
 
   @override
   void initState() {
     super.initState();
     _userDataFuture = _getUserData();
+    getUserName();
+  }
+
+  Future<void> getUserName() async {
+    final user = await _storageService.getUserData();
+    setState(() {
+      docName = user?.doctorName ?? '';
+    });
   }
 
   Future<LoginResponseModel?> _getUserData() async {
@@ -33,7 +46,34 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
+      appBar: AppBar(
+        backgroundColor: context.colorScheme.primary,
+        leading: IconButton(
+          icon: const Icon(Icons.menu_rounded, size: 30),
+          color: Colors.white,
+          onPressed: () {},
+        ),
+        title: Text(
+          '${context.l10n.welcome}, $docName',
+          style: AppTextStyles().titleMediumTextStyle(
+            context: context,
+            textColor: Colors.white,
+          ),
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout_rounded, size: 30),
+            color: Colors.white,
+            onPressed: () async {
+              await _storageService.clearUserData().whenComplete(() {
+                if (context.mounted) {
+                  AppNavigation().navigateToSignIn(context: context);
+                }
+              });
+            },
+          ),
+        ],
+      ),
       body: FutureBuilder<LoginResponseModel?>(
         future: _userDataFuture,
         builder: (context, snapshot) {
@@ -86,3 +126,67 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+// import 'package:event_app/core/localization/l10n/l10n.dart';
+// import 'package:event_app/core/services/secure_storage_service.dart';
+// import 'package:event_app/utils/extension/context_extension.dart';
+// import 'package:event_app/utils/navigation/app_navigation.dart';
+// import 'package:event_app/utils/theme/app_text_styles.dart';
+// import 'package:flutter/material.dart';
+
+// class HomeScreen extends StatefulWidget {
+//   const HomeScreen({super.key});
+
+//   @override
+//   State<HomeScreen> createState() => _HomeScreenState();
+// }
+
+// class _HomeScreenState extends State<HomeScreen> {
+//   final _storageService = SecureStorageService();
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         backgroundColor: context.colorScheme.primary,
+//         leading: IconButton(
+//           icon: const Icon(Icons.menu_rounded, size: 30),
+//           color: Colors.white,
+//           onPressed: () {},
+//         ),
+//         title: Text(
+//           '${context.l10n.welcome}, Kashif Hafeez',
+//           style: AppTextStyles().titleMediumTextStyle(
+//             context: context,
+//             textColor: Colors.white,
+//           ),
+//         ),
+//         actions: [
+//           IconButton(
+//             icon: const Icon(Icons.logout_rounded, size: 30),
+//             color: Colors.white,
+//             onPressed: () async {
+//               await _storageService.clearUserData().whenComplete(() {
+//                 if (context.mounted) {
+//                   AppNavigation().navigateToSignIn(context: context);
+//                 }
+//               });
+//             },
+//           ),
+//         ],
+//       ),
+//       body: SingleChildScrollView(
+//         child: Column(
+//           children: List.generate(
+//             20,
+//             (i) => Container(
+//               color: Colors.red,
+//               margin: const EdgeInsets.all(12),
+//               width: double.infinity,
+//               height: 150,
+//             ),
+//           ).toList(),
+//         ),
+//       ),
+//     );
+//   }
+// }

@@ -143,5 +143,9 @@
     "please_select_country": "يرجى اختيار الدولة",
     "@please_select_country": {
         "description": "التحقق من حقل الدولة في شاشة التسجيل"
+    },
+    "welcome": "أهلاً وسهلاً",
+    "@welcome": {
+        "description": "عنوان شريط التطبيق في شاشة الرئيسية"
     }
 }
