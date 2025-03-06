@@ -1,9 +1,11 @@
 import 'package:event_app/core/services/secure_storage_service.dart';
+import 'package:event_app/features/Badge/presentation/view/badge_screen.dart';
 import 'package:event_app/features/Home/presentation/view/home_screen.dart';
 import 'package:event_app/features/agenda/presentation/view/agenda_screen.dart';
 import 'package:event_app/features/auth/presentation/view/sign_in_screen.dart';
 import 'package:event_app/features/auth/presentation/view/sign_up_screen.dart';
 import 'package:event_app/features/auth/presentation/view/splash_screen.dart';
+import 'package:event_app/features/speakers/presentation/view/speaker_listing_screen.dart';
 import 'package:event_app/utils/extension/string_extenstion.dart';
 import 'package:event_app/utils/navigation/app_page_transition_builder.dart';
 import 'package:event_app/utils/navigation/app_route_names.dart';
@@ -80,7 +82,7 @@ class AppRouterNavigationDelegate {
         name: AppRouteNames().badgeRoute.convertRouteToName,
         pageBuilder: (context, state) => PageTransitionBuilder.transition(
           pageKey: state.pageKey,
-          child: const Scaffold(),
+          child: const BadgeScreen(),
         ),
       ),
       GoRoute(
@@ -96,7 +98,7 @@ class AppRouterNavigationDelegate {
         name: AppRouteNames().speakerListingRoute.convertRouteToName,
         pageBuilder: (context, state) => PageTransitionBuilder.transition(
           pageKey: state.pageKey,
-          child: const Scaffold(),
+          child: const SpeakerListingScreen(),
         ),
       ),
       GoRoute(

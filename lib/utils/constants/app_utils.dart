@@ -60,7 +60,7 @@ class AppUtils {
       iconData: Icons.person,
       color: const Color(0xffadd1ee),
       titleAr: 'مكبرات الصوت',
-      route: '',
+      route: AppRouteNames().speakerListingRoute,
     ),
     HomeViewModel(
       title: 'Badge',
@@ -68,7 +68,7 @@ class AppUtils {
       iconData: Icons.qr_code,
       color: const Color(0xff456e8f),
       titleAr: 'شارة',
-      route: '',
+      route: AppRouteNames().badgeRoute,
     ),
     HomeViewModel(
       title: 'Venue',

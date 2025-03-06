@@ -87,7 +87,7 @@ class _AgendaScreenState extends State<AgendaScreen> {
                                     constraints:
                                         const BoxConstraints(maxWidth: 120),
                                     child: Text(
-                                      'Day $day - ${dayTitles[day] ?? ""}',
+                                      '${context.l10n.day} $day - ${dayTitles[day] ?? ""}',
                                       maxLines: 2,
                                       softWrap: true,
                                       textAlign: TextAlign.center,

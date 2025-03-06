@@ -49,7 +49,12 @@ class AppDrawerWidget extends StatelessWidget {
                       .titleMediumTextStyle(context: context)
                       ?.copyWith(fontWeight: AppFontWeight().regular),
                 ),
-                onTap: () {},
+                onTap: () {
+                  AppNavigation().navigateToFeatureScreen(
+                    context: context,
+                    route: item.route,
+                  );
+                },
               );
             },
           ),

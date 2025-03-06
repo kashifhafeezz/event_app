@@ -168,5 +168,17 @@
     "details" : "Details",
     "@details":{
         "description": "Agenda screen details text"
+    },
+    "day" : "Day",
+    "@day":{
+        "description": "Agenda screen Day text"
+    },
+    "scan_qr_code": "SCAN THIS QR CODE FOR ATTENDANCE",
+    "@scan_qr_code" : {
+        "description": "Badge Screen qr code scan bottom text"
+    },
+    "speakers" : "SPEAKERS",
+    "@speakers" : {
+        "description": "Speaker screen title" 
     }
 }
