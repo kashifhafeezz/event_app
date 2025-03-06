@@ -12,14 +12,10 @@ class AuthHeaderWidget extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(15),
-          child: Assets.images.ldbMeLogo.image(
-            width: 120,
-            height: 120,
-            fit: BoxFit.fill,
-          ),
+          child: Assets.images.lldd.image(height: 100),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 50),
+          padding: const EdgeInsets.only(top: 20, bottom: 50),
           child: Text(
             title,
             style: AppTextStyles().titleLargeTextStyle(context: context),

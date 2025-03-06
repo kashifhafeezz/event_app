@@ -5,7 +5,7 @@ import 'package:event_app/features/auth/data/models/request_model/login_request_
 import 'package:event_app/features/auth/data/models/request_model/register_request_model.dart';
 import 'package:event_app/features/auth/data/models/response_model/login_response_model.dart';
 import 'package:event_app/utils/client/api_client.dart';
-import 'package:event_app/utils/contants/api_routes.dart';
+import 'package:event_app/utils/constants/api_routes.dart';
 
 class AuthRemoteDataSourceImplementation implements AuthRemoteDataSource {
   const AuthRemoteDataSourceImplementation({required this.client});

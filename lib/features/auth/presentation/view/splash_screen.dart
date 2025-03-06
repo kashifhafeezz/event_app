@@ -28,11 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
         child: ClipRRect(
           borderRadius: BorderRadius.circular(15),
-          child: Assets.images.ldbMeLogo.image(
-            width: 120,
-            height: 120,
-            fit: BoxFit.fill,
-          ),
+          child: Assets.images.lldd.image(height: 100),
         ),
       ),
     );

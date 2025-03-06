@@ -1,4 +1,4 @@
-import 'package:event_app/utils/contants/app_const.dart';
+import 'package:event_app/utils/constants/app_const.dart';
 import 'package:event_app/utils/extension/context_extension.dart';
 import 'package:event_app/utils/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';

@@ -27,4 +27,13 @@ class AppNavigation {
   void navigateToHome({required BuildContext context}) {
     context.goNamed(_routeNames.homeRoute.convertRouteToName);
   }
+
+  void navigateToFeatureScreen({
+    required BuildContext context,
+    required String route,
+  }) {
+    if (route.isNotEmpty) {
+      context.pushNamed(route.convertRouteToName);
+    }
+  }
 }

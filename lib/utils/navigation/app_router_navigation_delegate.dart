@@ -1,5 +1,6 @@
 import 'package:event_app/core/services/secure_storage_service.dart';
-import 'package:event_app/features/Home/view/home_screen.dart';
+import 'package:event_app/features/Home/presentation/view/home_screen.dart';
+import 'package:event_app/features/agenda/presentation/view/agenda_screen.dart';
 import 'package:event_app/features/auth/presentation/view/sign_in_screen.dart';
 import 'package:event_app/features/auth/presentation/view/sign_up_screen.dart';
 import 'package:event_app/features/auth/presentation/view/splash_screen.dart';
@@ -15,17 +16,14 @@ class AppRouterNavigationDelegate {
   static final GoRouter router = GoRouter(
     navigatorKey: rootNavigatorKey,
     initialLocation: AppRouteNames().initialRoute,
-    // Add the redirect logic here
+    // Checking If User Login, Navigate to Home screen other wise navigate to Login screen
     redirect: (context, state) async {
-      // Don't redirect on the splash screen
       if (state.fullPath == AppRouteNames().initialRoute) {
         return null;
       }
 
-      // Check if user is logged in
       final isLoggedIn = await _storageService.isUserLoggedIn();
 
-      // If not logged in and not on auth screen, redirect to login
       final isGoingToAuth = state.fullPath == AppRouteNames().signInRoute ||
           state.fullPath == AppRouteNames().signUpRoute;
 
@@ -33,12 +31,10 @@ class AppRouterNavigationDelegate {
         return AppRouteNames().signInRoute;
       }
 
-      // If logged in and going to auth screen, redirect to home
       if (isLoggedIn && isGoingToAuth) {
         return AppRouteNames().homeRoute;
       }
 
-      // No redirect needed
       return null;
     },
     routes: [
@@ -76,7 +72,7 @@ class AppRouterNavigationDelegate {
         name: AppRouteNames().agendaRoute.convertRouteToName,
         pageBuilder: (context, state) => PageTransitionBuilder.transition(
           pageKey: state.pageKey,
-          child: const Scaffold(),
+          child: const AgendaScreen(),
         ),
       ),
       GoRoute(

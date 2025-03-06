@@ -6,5 +6,3 @@ abstract class AuthRemoteDataSource {
   Future<bool> register({required RegisterRequestModel params});
   Future<LoginResponseModel> login({required LoginRequestModel params});
 }
-
-// kashif@hafeez.com , 123456

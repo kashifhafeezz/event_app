@@ -148,5 +148,25 @@
     "welcome" : "Welcome",
     "@welcome" : {
         "description": "Home Screen app bar title"
+    },
+    "home" : "Home",
+    "@home" : {
+        "description": "Home Screen drawer text"
+    },
+    "back" : "Back",
+    "@back" : {
+        "description": "App Common App Bar Back text"
+    },
+    "agenda" : "AGENDA",
+    "@agenda" : {
+        "description": "Agenda screen title"
+    },
+    "time" : "Time",
+    "@time":{
+        "description": "Agenda screen time text"
+    },
+    "details" : "Details",
+    "@details":{
+        "description": "Agenda screen details text"
     }
 }

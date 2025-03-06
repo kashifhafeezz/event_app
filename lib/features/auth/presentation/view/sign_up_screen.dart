@@ -6,9 +6,9 @@ import 'package:event_app/features/auth/presentation/widget/auth_validation.dart
 import 'package:event_app/utils/common/app_button.dart';
 import 'package:event_app/utils/common/app_drop_down.dart';
 import 'package:event_app/utils/common/app_text_field.dart';
-import 'package:event_app/utils/contants/app_const.dart';
-import 'package:event_app/utils/contants/app_snack_bar.dart';
-import 'package:event_app/utils/contants/app_utils.dart';
+import 'package:event_app/utils/constants/app_const.dart';
+import 'package:event_app/utils/constants/app_snack_bar.dart';
+import 'package:event_app/utils/constants/app_utils.dart';
 import 'package:event_app/utils/di/di_container.dart';
 import 'package:event_app/utils/extension/context_extension.dart';
 import 'package:event_app/utils/navigation/app_navigation.dart';
