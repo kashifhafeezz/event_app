@@ -1,5 +1,6 @@
 import 'package:event_app/core/localization/l10n/l10n.dart';
 import 'package:event_app/gen/assets.gen.dart';
+import 'package:event_app/utils/common/fade_animation.dart';
 import 'package:event_app/utils/constants/app_const.dart';
 import 'package:event_app/utils/constants/app_utils.dart';
 import 'package:event_app/utils/navigation/app_navigation.dart';
@@ -15,25 +16,31 @@ class AppDrawerWidget extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0, 40, 0, 8),
-            child: Assets.images.lldd.image(
-              height: 80,
+          FadeAnimation(
+            delay: 1,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(0, 40, 0, 8),
+              child: Assets.images.lldd.image(
+                height: 80,
+              ),
             ),
           ),
-          ListTile(
-            visualDensity: const VisualDensity(vertical: -2),
-            leading: const Icon(Icons.home, size: 25),
-            title: Text(
-              context.l10n.home,
-              style: AppTextStyles()
-                  .titleMediumTextStyle(context: context)
-                  ?.copyWith(fontWeight: AppFontWeight().regular),
+          FadePositionAnimation(
+            delay: 1,
+            child: ListTile(
+              visualDensity: const VisualDensity(vertical: -2),
+              leading: const Icon(Icons.home, size: 25),
+              title: Text(
+                context.l10n.home,
+                style: AppTextStyles()
+                    .titleMediumTextStyle(context: context)
+                    ?.copyWith(fontWeight: AppFontWeight().regular),
+              ),
+              onTap: () {
+                AppNavigation().navigateBack(context: context);
+                AppNavigation().navigateToHome(context: context);
+              },
             ),
-            onTap: () {
-              AppNavigation().navigateBack(context: context);
-              AppNavigation().navigateToHome(context: context);
-            },
           ),
           ListView.builder(
             itemCount: AppUtils().homeViewModelList.length,
@@ -42,20 +49,23 @@ class AppDrawerWidget extends StatelessWidget {
             padding: EdgeInsets.zero,
             itemBuilder: (context, index) {
               final item = AppUtils().homeViewModelList[index];
-              return ListTile(
-                leading: Icon(item.iconData, size: 25),
-                title: Text(
-                  AppConst().isArabic ? item.titleAr : item.title,
-                  style: AppTextStyles()
-                      .titleMediumTextStyle(context: context)
-                      ?.copyWith(fontWeight: AppFontWeight().regular),
+              return FadePositionAnimation(
+                delay: 2,
+                child: ListTile(
+                  leading: Icon(item.iconData, size: 25),
+                  title: Text(
+                    AppConst().isArabic ? item.titleAr : item.title,
+                    style: AppTextStyles()
+                        .titleMediumTextStyle(context: context)
+                        ?.copyWith(fontWeight: AppFontWeight().regular),
+                  ),
+                  onTap: () {
+                    AppNavigation().navigateToFeatureScreen(
+                      context: context,
+                      route: item.route,
+                    );
+                  },
                 ),
-                onTap: () {
-                  AppNavigation().navigateToFeatureScreen(
-                    context: context,
-                    route: item.route,
-                  );
-                },
               );
             },
           ),

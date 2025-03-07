@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:event_app/core/localization/manager/cubit/locale_cubit.dart';
 import 'package:event_app/core/services/secure_storage_service.dart';
 import 'package:event_app/features/Home/presentation/manager/theme_cubit/theme_cubit.dart';
@@ -29,6 +30,7 @@ import 'package:event_app/features/speakers/domain/usecases/speaker_usecase.dart
 import 'package:event_app/features/speakers/presentation/manager/speaker_bloc/speaker_bloc.dart';
 import 'package:event_app/utils/client/api_client.dart';
 import 'package:event_app/utils/constants/api_routes.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 
 final di = GetIt.instance;
@@ -82,13 +84,21 @@ void _manageRepositories() {
       () => AgendaRepositoryImpl(agendaRemoteDataSource: di()),
     )
     ..registerLazySingleton<AgendaRemoteDataSource>(
-      () => AgendaRemoteDataSourceImpl(client: di()),
+      () => AgendaRemoteDataSourceImpl(
+        client: di(),
+        secureStorage: const FlutterSecureStorage(),
+        connectivity: Connectivity(),
+      ),
     )
     ..registerLazySingleton<SpeakerRepository>(
       () => SpeakerRepositoryImpl(speakerRemoteDataSource: di()),
     )
     ..registerLazySingleton<SpeakerRemoteDataSource>(
-      () => SpeakerRemoteDataSourceImpl(client: di()),
+      () => SpeakerRemoteDataSourceImpl(
+        client: di(),
+        secureStorage: const FlutterSecureStorage(),
+        connectivity: Connectivity(),
+      ),
     )
     ..registerLazySingleton<AskQuestionRepository>(
       () => AskQuestionRepositoryImpl(askQuestionRemoteDataSource: di()),

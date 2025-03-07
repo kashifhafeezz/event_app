@@ -9,6 +9,7 @@ import 'package:event_app/utils/common/app_drop_down.dart';
 import 'package:event_app/utils/common/app_header_widget.dart';
 import 'package:event_app/utils/common/app_text_field.dart';
 import 'package:event_app/utils/common/common_app_bar.dart';
+import 'package:event_app/utils/common/fade_animation.dart';
 import 'package:event_app/utils/constants/app_const.dart';
 import 'package:event_app/utils/constants/app_snack_bar.dart';
 import 'package:event_app/utils/di/di_container.dart';
@@ -99,23 +100,27 @@ class _AskQuestionScreenState extends State<AskQuestionScreen> {
           }
         },
         builder: (context, state) {
-          return AppButton(
-            text: context.l10n.submit,
-            isLoading: state is AskQuestionLoadingState,
-            onPressed: () {
-              if (formkey.currentState!.validate()) {
-                askQuestionBloc.add(
-                  SubmitQuestionEvent(
-                    requestModel: AskQuestionRequestModel(
-                      eventId: 1,
-                      speakerName: selectedSession.value.toString(),
-                      askedBy: youNameController.text,
-                      questionDetail: askQuestionController.text,
+          return FadeAnimation(
+            delay: 1,
+            beginPointOnY: 30,
+            child: AppButton(
+              text: context.l10n.submit,
+              isLoading: state is AskQuestionLoadingState,
+              onPressed: () {
+                if (formkey.currentState!.validate()) {
+                  askQuestionBloc.add(
+                    SubmitQuestionEvent(
+                      requestModel: AskQuestionRequestModel(
+                        eventId: 1,
+                        speakerName: selectedSession.value.toString(),
+                        askedBy: youNameController.text,
+                        questionDetail: askQuestionController.text,
+                      ),
                     ),
-                  ),
-                );
-              }
-            },
+                  );
+                }
+              },
+            ),
           );
         },
       ),
@@ -125,66 +130,69 @@ class _AskQuestionScreenState extends State<AskQuestionScreen> {
   Widget _fields(BuildContext context) {
     return Form(
       key: formkey,
-      child: Column(
-        children: [
-          const SizedBox(height: 35),
-          BlocProvider.value(
-            value: speakerBloc,
-            child: BlocBuilder<SpeakerBloc, SpeakerState>(
-              builder: (context, state) {
-                if (state is SpeakerLoadingState) {
-                  return const Center(child: CircularProgressIndicator());
-                }
+      child: FadeAnimation(
+        delay: 1,
+        child: Column(
+          children: [
+            const SizedBox(height: 35),
+            BlocProvider.value(
+              value: speakerBloc,
+              child: BlocBuilder<SpeakerBloc, SpeakerState>(
+                builder: (context, state) {
+                  if (state is SpeakerLoadingState) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
 
-                if (state is SpeakerErrorState) {
-                  return Text(state.errorMessage);
-                }
-                if (state is SpeakerLoadedState) {
-                  return ValueListenableBuilder<String?>(
-                    valueListenable: selectedSession,
-                    builder: (context, value, child) {
-                      return AppDropdown<String>(
-                        items: state.speakerList
-                            .map((e) => e.speakerName)
-                            .toList(),
-                        selectedValue: value,
-                        title: context.l10n.select_session,
-                        hintText: context.l10n.select_session_hint,
-                        onChanged: (newValue) {
-                          selectedSession.value = newValue;
-                        },
-                        validator: (v) {
-                          return AuthValidation().validateSession(v, context);
-                        },
-                      );
-                    },
-                  );
-                }
-                return const Text('Error Occurred');
+                  if (state is SpeakerErrorState) {
+                    return Text(state.errorMessage);
+                  }
+                  if (state is SpeakerLoadedState) {
+                    return ValueListenableBuilder<String?>(
+                      valueListenable: selectedSession,
+                      builder: (context, value, child) {
+                        return AppDropdown<String>(
+                          items: state.speakerList
+                              .map((e) => e.speakerName)
+                              .toList(),
+                          selectedValue: value,
+                          title: context.l10n.select_session,
+                          hintText: context.l10n.select_session_hint,
+                          onChanged: (newValue) {
+                            selectedSession.value = newValue;
+                          },
+                          validator: (v) {
+                            return AuthValidation().validateSession(v, context);
+                          },
+                        );
+                      },
+                    );
+                  }
+                  return const Text('Error Occurred');
+                },
+              ),
+            ),
+            const SizedBox(height: 20),
+            AppTextField(
+              controller: youNameController,
+              title: context.l10n.your_name,
+              hintText: context.l10n.your_name_hint,
+              validator: (v) {
+                return AuthValidation().validateYourName(v, context);
               },
             ),
-          ),
-          const SizedBox(height: 20),
-          AppTextField(
-            controller: youNameController,
-            title: context.l10n.your_name,
-            hintText: context.l10n.your_name_hint,
-            validator: (v) {
-              return AuthValidation().validateYourName(v, context);
-            },
-          ),
-          const SizedBox(height: 20),
-          AppTextField(
-            controller: askQuestionController,
-            title: context.l10n.ask_question_field,
-            hintText: context.l10n.ask_question_field_hint,
-            maxlines: 6,
-            validator: (v) {
-              return AuthValidation().validateAskQuestion(v, context);
-            },
-          ),
-          const SizedBox(height: 50),
-        ],
+            const SizedBox(height: 20),
+            AppTextField(
+              controller: askQuestionController,
+              title: context.l10n.ask_question_field,
+              hintText: context.l10n.ask_question_field_hint,
+              maxlines: 6,
+              validator: (v) {
+                return AuthValidation().validateAskQuestion(v, context);
+              },
+            ),
+            const SizedBox(height: 50),
+          ],
+        ),
       ),
     );
   }

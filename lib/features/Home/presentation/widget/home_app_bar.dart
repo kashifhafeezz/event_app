@@ -1,5 +1,6 @@
 import 'package:event_app/core/localization/l10n/l10n.dart';
 import 'package:event_app/core/services/secure_storage_service.dart';
+import 'package:event_app/utils/common/fade_animation.dart';
 import 'package:event_app/utils/extension/context_extension.dart';
 import 'package:event_app/utils/navigation/app_navigation.dart';
 import 'package:event_app/utils/theme/app_text_styles.dart';
@@ -40,36 +41,48 @@ class _HomeAppBarState extends State<HomeAppBar> {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: context.colorScheme.primary,
-      title: Text(
-        '${context.l10n.welcome}, $doctorName',
-        style: AppTextStyles().titleMediumTextStyle(
-          context: context,
-          textColor: Colors.white,
+      title: FadeAnimation(
+        delay: 1,
+        child: Text(
+          '${context.l10n.welcome}, $doctorName',
+          style: AppTextStyles().titleMediumTextStyle(
+            context: context,
+            textColor: Colors.white,
+          ),
         ),
       ),
-      leading: IconButton(
-        icon: const Icon(Icons.menu_rounded, size: 30),
-        color: Colors.white,
-        onPressed: widget.onMenuPressed,
+      leading: FadeAnimation(
+        delay: 1,
+        child: IconButton(
+          icon: const Icon(Icons.menu_rounded, size: 30),
+          color: Colors.white,
+          onPressed: widget.onMenuPressed,
+        ),
       ),
       actions: [
-        IconButton(
-          icon: const Icon(Icons.settings, size: 30),
-          color: Colors.white,
-          onPressed: () async {
-            AppNavigation().navigateToSetting(context: context);
-          },
+        FadeAnimation(
+          delay: 1,
+          child: IconButton(
+            icon: const Icon(Icons.settings, size: 30),
+            color: Colors.white,
+            onPressed: () async {
+              AppNavigation().navigateToSetting(context: context);
+            },
+          ),
         ),
-        IconButton(
-          icon: const Icon(Icons.logout_rounded, size: 30),
-          color: Colors.white,
-          onPressed: () async {
-            await _storageService.clearUserData().whenComplete(() {
-              if (context.mounted) {
-                AppNavigation().navigateToSignIn(context: context);
-              }
-            });
-          },
+        FadeAnimation(
+          delay: 1,
+          child: IconButton(
+            icon: const Icon(Icons.logout_rounded, size: 30),
+            color: Colors.white,
+            onPressed: () async {
+              await _storageService.clearUserData().whenComplete(() {
+                if (context.mounted) {
+                  AppNavigation().navigateToSignIn(context: context);
+                }
+              });
+            },
+          ),
         ),
       ],
     );

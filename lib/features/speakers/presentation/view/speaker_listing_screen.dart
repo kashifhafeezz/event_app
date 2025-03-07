@@ -4,6 +4,7 @@ import 'package:event_app/features/speakers/presentation/widget/speaker_list_til
 import 'package:event_app/utils/common/app_drawer_widget.dart';
 import 'package:event_app/utils/common/app_header_widget.dart';
 import 'package:event_app/utils/common/common_app_bar.dart';
+import 'package:event_app/utils/common/fade_animation.dart';
 import 'package:event_app/utils/di/di_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -65,7 +66,10 @@ class _SpeakerListingScreenState extends State<SpeakerListingScreen> {
                       itemCount: state.speakerList.length,
                       itemBuilder: (context, index) {
                         final item = state.speakerList[index];
-                        return SpeakerListTile(speakerModel: item);
+                        return FadePositionAnimation(
+                          delay: index.toDouble(),
+                          child: SpeakerListTile(speakerModel: item),
+                        );
                       },
                     );
                   }

@@ -5,6 +5,7 @@ import 'package:event_app/features/agenda/presentation/widget/agenda_listing.dar
 import 'package:event_app/utils/common/app_drawer_widget.dart';
 import 'package:event_app/utils/common/app_header_widget.dart';
 import 'package:event_app/utils/common/common_app_bar.dart';
+import 'package:event_app/utils/common/fade_animation.dart';
 import 'package:event_app/utils/di/di_container.dart';
 import 'package:event_app/utils/extension/context_extension.dart';
 import 'package:event_app/utils/theme/app_text_styles.dart';
@@ -72,52 +73,55 @@ class _AgendaScreenState extends State<AgendaScreen> {
                       children: [
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: days.map((day) {
-                              return Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 4),
-                                child: ChoiceChip(
-                                  side: BorderSide(
-                                    color: selectedDay == day
-                                        ? Colors.transparent
-                                        : context.colorScheme.primary,
-                                  ),
-                                  label: Container(
-                                    constraints:
-                                        const BoxConstraints(maxWidth: 120),
-                                    child: Text(
-                                      '${context.l10n.day} $day - ${dayTitles[day] ?? ""}',
-                                      maxLines: 2,
-                                      softWrap: true,
-                                      textAlign: TextAlign.center,
-                                      style:
-                                          AppTextStyles().labelLargeTextStyle(
-                                        context: context,
-                                        textColor: selectedDay == day
-                                            ? context.colorScheme.onPrimary
-                                            : context.colorScheme.primary,
+                          child: FadeAnimation(
+                            delay: 2,
+                            child: Row(
+                              children: days.map((day) {
+                                return Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(horizontal: 4),
+                                  child: ChoiceChip(
+                                    side: BorderSide(
+                                      color: selectedDay == day
+                                          ? Colors.transparent
+                                          : context.colorScheme.primary,
+                                    ),
+                                    label: Container(
+                                      constraints:
+                                          const BoxConstraints(maxWidth: 120),
+                                      child: Text(
+                                        '${context.l10n.day} $day - ${dayTitles[day] ?? ""}',
+                                        maxLines: 2,
+                                        softWrap: true,
+                                        textAlign: TextAlign.center,
+                                        style:
+                                            AppTextStyles().labelLargeTextStyle(
+                                          context: context,
+                                          textColor: selectedDay == day
+                                              ? context.colorScheme.onPrimary
+                                              : context.colorScheme.primary,
+                                        ),
                                       ),
                                     ),
+                                    selected: selectedDay == day,
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 4,
+                                      horizontal: 25,
+                                    ),
+                                    showCheckmark: false,
+                                    onSelected: (selected) {
+                                      setState(() {
+                                        selectedDay = day;
+                                      });
+                                    },
+                                    selectedColor: context.colorScheme.primary,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30),
+                                    ),
                                   ),
-                                  selected: selectedDay == day,
-                                  padding: const EdgeInsets.symmetric(
-                                    vertical: 4,
-                                    horizontal: 25,
-                                  ),
-                                  showCheckmark: false,
-                                  onSelected: (selected) {
-                                    setState(() {
-                                      selectedDay = day;
-                                    });
-                                  },
-                                  selectedColor: context.colorScheme.primary,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
-                                ),
-                              );
-                            }).toList(),
+                                );
+                              }).toList(),
+                            ),
                           ),
                         ),
                         const SizedBox(height: 20),

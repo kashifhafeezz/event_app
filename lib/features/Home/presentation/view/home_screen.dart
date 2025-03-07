@@ -1,5 +1,6 @@
 import 'package:event_app/features/Home/presentation/widget/home_app_bar.dart';
 import 'package:event_app/utils/common/app_drawer_widget.dart';
+import 'package:event_app/utils/common/fade_animation.dart';
 import 'package:event_app/utils/constants/app_const.dart';
 import 'package:event_app/utils/constants/app_utils.dart';
 import 'package:event_app/utils/navigation/app_navigation.dart';
@@ -36,20 +37,23 @@ class _HomeScreenState extends State<HomeScreen> {
         itemCount: AppUtils().homeViewModelList.length,
         itemBuilder: (context, index) {
           final item = AppUtils().homeViewModelList[index];
-          return GestureDetector(
-            onTap: () {
-              AppNavigation().navigateToFeatureScreen(
-                context: context,
-                route: item.route,
-              );
-            },
-            behavior: HitTestBehavior.opaque,
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                color: item.color,
-                borderRadius: BorderRadius.circular(16),
+          return FadeAnimation(
+            delay: index.toDouble(),
+            child: GestureDetector(
+              onTap: () {
+                AppNavigation().navigateToFeatureScreen(
+                  context: context,
+                  route: item.route,
+                );
+              },
+              behavior: HitTestBehavior.opaque,
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  color: item.color,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Image.asset(item.image),
               ),
-              child: Image.asset(item.image),
             ),
           );
         },

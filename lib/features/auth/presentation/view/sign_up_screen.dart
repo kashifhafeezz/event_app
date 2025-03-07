@@ -6,6 +6,7 @@ import 'package:event_app/features/auth/presentation/widget/auth_validation.dart
 import 'package:event_app/utils/common/app_button.dart';
 import 'package:event_app/utils/common/app_drop_down.dart';
 import 'package:event_app/utils/common/app_text_field.dart';
+import 'package:event_app/utils/common/fade_animation.dart';
 import 'package:event_app/utils/constants/app_const.dart';
 import 'package:event_app/utils/constants/app_snack_bar.dart';
 import 'package:event_app/utils/constants/app_utils.dart';
@@ -76,32 +77,36 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     padding: EdgeInsets.symmetric(
                       horizontal: AppConst().screenHorizontalPadding,
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        AuthHeaderWidget(title: context.l10n.registration),
-                        _fields(context),
-                        _userConsentCheckBox(),
-                        _registerButton(context),
-                        const SizedBox(height: 30),
-                        GestureDetector(
-                          onTap: () {
-                            AppNavigation().navigateBack(context: context);
-                          },
-                          behavior: HitTestBehavior.opaque,
-                          child: Text(
-                            context.l10n.login_to_an_account,
-                            style: AppTextStyles()
-                                .titleSmallTextStyle(
-                                  context: context,
-                                  textColor:
-                                      Colors.black.withValues(alpha: 0.7),
-                                )
-                                ?.copyWith(fontWeight: AppFontWeight().regular),
+                    child: FadeAnimation(
+                      delay: 1,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          AuthHeaderWidget(title: context.l10n.registration),
+                          _fields(context),
+                          _userConsentCheckBox(),
+                          _registerButton(context),
+                          const SizedBox(height: 30),
+                          GestureDetector(
+                            onTap: () {
+                              AppNavigation().navigateBack(context: context);
+                            },
+                            behavior: HitTestBehavior.opaque,
+                            child: Text(
+                              context.l10n.login_to_an_account,
+                              style: AppTextStyles()
+                                  .titleSmallTextStyle(
+                                    context: context,
+                                    textColor:
+                                        Colors.black.withValues(alpha: 0.7),
+                                  )
+                                  ?.copyWith(
+                                      fontWeight: AppFontWeight().regular),
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 15),
-                      ],
+                          const SizedBox(height: 15),
+                        ],
+                      ),
                     ),
                   ),
                 ),

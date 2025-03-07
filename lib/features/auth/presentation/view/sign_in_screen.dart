@@ -5,6 +5,7 @@ import 'package:event_app/features/auth/presentation/widget/auth_header_widget.d
 import 'package:event_app/features/auth/presentation/widget/auth_validation.dart';
 import 'package:event_app/utils/common/app_button.dart';
 import 'package:event_app/utils/common/app_text_field.dart';
+import 'package:event_app/utils/common/fade_animation.dart';
 import 'package:event_app/utils/constants/app_const.dart';
 import 'package:event_app/utils/constants/app_snack_bar.dart';
 import 'package:event_app/utils/di/di_container.dart';
@@ -59,31 +60,18 @@ class _SignInScreenState extends State<SignInScreen> {
                     padding: EdgeInsets.symmetric(
                       horizontal: AppConst().screenHorizontalPadding,
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        AuthHeaderWidget(title: context.l10n.login),
-                        _fields(context),
-                        const SizedBox(height: 32),
-                        _loginButton(context),
-                        const SizedBox(height: 30),
-                        Text(
-                          '${context.l10n.forget_password}?',
-                          style: AppTextStyles()
-                              .titleSmallTextStyle(
-                                context: context,
-                                textColor: Colors.black.withValues(alpha: 0.7),
-                              )
-                              ?.copyWith(fontWeight: AppFontWeight().regular),
-                        ),
-                        const SizedBox(height: 15),
-                        GestureDetector(
-                          onTap: () {
-                            AppNavigation().navigateToSignUp(context: context);
-                          },
-                          behavior: HitTestBehavior.opaque,
-                          child: Text(
-                            context.l10n.create_an_account,
+                    child: FadeAnimation(
+                      delay: 1,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          AuthHeaderWidget(title: context.l10n.login),
+                          _fields(context),
+                          const SizedBox(height: 32),
+                          _loginButton(context),
+                          const SizedBox(height: 30),
+                          Text(
+                            '${context.l10n.forget_password}?',
                             style: AppTextStyles()
                                 .titleSmallTextStyle(
                                   context: context,
@@ -92,8 +80,28 @@ class _SignInScreenState extends State<SignInScreen> {
                                 )
                                 ?.copyWith(fontWeight: AppFontWeight().regular),
                           ),
-                        ),
-                      ],
+                          const SizedBox(height: 15),
+                          GestureDetector(
+                            onTap: () {
+                              AppNavigation()
+                                  .navigateToSignUp(context: context);
+                            },
+                            behavior: HitTestBehavior.opaque,
+                            child: Text(
+                              context.l10n.create_an_account,
+                              style: AppTextStyles()
+                                  .titleSmallTextStyle(
+                                    context: context,
+                                    textColor:
+                                        Colors.black.withValues(alpha: 0.7),
+                                  )
+                                  ?.copyWith(
+                                    fontWeight: AppFontWeight().regular,
+                                  ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
