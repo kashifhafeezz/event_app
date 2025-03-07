@@ -19,20 +19,27 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: context.colorScheme.surface,
-      leadingWidth: 20,
-      leading: IconButton(
-        icon: const Icon(Icons.arrow_back_ios_rounded),
-        color: context.colorScheme.primary,
-        onPressed: () => AppNavigation().navigateBack(context: context),
-      ),
-      title: GestureDetector(
+      leadingWidth: 100,
+      leading: GestureDetector(
         onTap: () => AppNavigation().navigateBack(context: context),
         behavior: HitTestBehavior.opaque,
-        child: Text(
-          context.l10n.back,
-          style: AppTextStyles().titleMediumTextStyle(
-            context: context,
-            textColor: context.colorScheme.primary,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 5),
+          child: Row(
+            children: [
+              Icon(
+                Icons.arrow_back_ios_rounded,
+                color: context.colorScheme.primary,
+              ),
+              const SizedBox(width: 5),
+              Text(
+                context.l10n.back,
+                style: AppTextStyles().titleMediumTextStyle(
+                  context: context,
+                  textColor: context.colorScheme.primary,
+                ),
+              ),
+            ],
           ),
         ),
       ),
